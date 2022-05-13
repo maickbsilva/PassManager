@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cadastro de Visitante</h1>
+
+	<form method="post" action="salvarVisitante">
+
+		<input type="hidden" name="id" />
+
+		<div>
+			nome <input type="text" name="nome">
+		</div>
+		<br>
+		<div>
+			rg <input type="text" name="rg">
+		</div>
+		<br>
+
+		<div>
+			foto <input type="text" name="foto">
+		</div>
+		<br>
+		<div>
+			preferencial <input type="checkbox" name="pref">
+		</div>
+		<br>
+
+		<div>
+			email <input type="email" name="email">
+		</div>
+		<br>
+		<div>
+			telefone <input type="text" name="telefone">
+		</div>
+		<br>
+
+		<div>
+			<select name="portaria.id">
+				<option th:each="p: ${portaria}" th:text="${p.nome}" th:value="${p.id}"></option>
+			</select> <label>Nome do porteiro cadastrante</label>
+		</div>
+		<br>
+
+		<div>
+			<button type="submit">Cadastrar</button>
+		</div>
+	</form>
+</body>
+</html>

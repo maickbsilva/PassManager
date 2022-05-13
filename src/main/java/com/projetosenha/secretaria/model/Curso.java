@@ -23,13 +23,9 @@ public class Curso {
 	@NotEmpty
 	@Column(nullable = false, unique = true)
 	private String nome;
-
-	@JsonFormat(pattern = "dd-MM-yyyy")
-	private Calendar matriculaInicio;
-
-	@JsonFormat(pattern = "dd-MM-yyyy")
-	private Calendar matriculaExpiracao;
-
-	private Boolean disponivel;
+	
+	private String matriculaInicio;
+	
+	private String matriculaExpiracao;
 
 }

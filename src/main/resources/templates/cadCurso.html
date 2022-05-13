@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cadastro de curso</h1>
+
+	<form method="post" action="salvarCurso">
+
+		<input type="hidden" name="id" />
+
+		<div>
+			nome <input type="text" name="nome">
+		</div>
+		<br>
+		<div>
+			matricula inicio <input type="date" name="matriculaInicio">
+		</div>
+		<br>
+		<div>
+			matricula expiracao <input type="date" name="matriculaExpiracao">
+		</div>
+		<br>
+		
+		<div>
+			<button type="submit">Cadastrar</button>
+		</div>
+	</form>
+</body>
+</html>
