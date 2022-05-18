@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.projetosenha.secretaria.util.HashUtil;
 
 import lombok.Data;
