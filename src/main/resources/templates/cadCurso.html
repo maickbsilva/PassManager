@@ -9,18 +9,18 @@
 
 	<form method="post" action="salvarCurso">
 
-		<input type="hidden" name="id" />
+		<input type="hidden" name="id" th:value="${c?.id}" />
 
 		<div>
-			nome <input type="text" name="nome">
+			nome <input type="text" name="nome" th:value="${c?.nome}">
 		</div>
 		<br>
 		<div>
-			matricula inicio <input type="date" name="matriculaInicio">
+			matricula inicio <input type="date" name="matriculaInicio" th:value="${c?.matriculaInicio}">
 		</div>
 		<br>
 		<div>
-			matricula expiracao <input type="date" name="matriculaExpiracao">
+			matricula expiracao <input type="date" name="matriculaExpiracao" th:value="${c?.matriculaExpiracao}">
 		</div>
 		<br>
 		

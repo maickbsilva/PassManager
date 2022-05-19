@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Lista Portaria</h1>
+
+	<table class="striped">
+		<thead>
+			<th>Id</th>
+			<th>Nome:</th>
+			<th>Matricula</th>
+			<th>Alterar</th>
+			<th>Excluir</th>
+		</thead>
+
+		<tbody>
+			<tr th:each="p:${ports}">
+
+				<td th:text="${p.id}" />
+				<td th:text="${p.nome}" />
+				<td th:text="${p.login}" />
+				<td><a th:href="@{/alterarP(id=${p.id})}">Alterar</a></td>
+
+				<td><a
+					th:attr="onclick=|return confirm('Deseja excluir: ${p.nome}')|"
+					th:href="@{/excluirP(id=${p.id})}">Excluir </a></td>
+
+			</tr>
+
+		</tbody>
+	</table>
+
+
+</body>
+</html>
