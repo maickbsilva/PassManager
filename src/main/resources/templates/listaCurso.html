@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Lista Cursos</h1>
+
+	<table class="striped">
+		<thead>
+			<th>Id</th>
+			<th>Nome:</th>
+			<th>Matricula Inicio</th>
+			<th>Matricula Expiracao</th>
+			<th>Alterar</th>
+			<th>Excluir</th>
+		</thead>
+
+		<tbody>
+			<tr th:each="c:${cursos}">
+
+				<td th:text="${c.id}" />
+				<td th:text="${c.nome}" />
+				<td th:text="${c.matriculaInicio}" />
+				<td th:text="${c.matriculaExpiracao}" />
+				<td><a th:href="@{/alterarC(id=${c.id})}">Alterar</a></td>
+
+				<td><a
+					th:attr="onclick=|return confirm('Deseja excluir: ${c.nome}')|"
+					th:href="@{/excluirC(id=${c.id})}">Excluir </a></td>
+
+			</tr>
+
+		</tbody>
+	</table>
+
+
+</body>
+</html>

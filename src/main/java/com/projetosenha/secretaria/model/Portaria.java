@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
+import com.projetosenha.secretaria.util.HashUtil;
+
 import lombok.Data;
 
 @Data
@@ -26,18 +28,12 @@ public class Portaria {
 	@NotEmpty
 	private String senha;
 	
-	
-	/*
-	 * 
-	 * //metodo set que aplica o hash na senha
-		public void setSenha(String senha) {
-			
-			this.senha = HashUtil.hash(senha);
-		}
-		//método que "seta" o hash na senha
-		public void setSenhaComHash(String hash) {
-			this.senha = hash;
-		}
-	 * 
-	 */
+	// metodo set que aplica o hash na senha
+	public void setSenha(String senha) {
+		this.senha = HashUtil.hash(senha);
+	}
+	//para comparar e atualizar
+	public void setSenhaComHash(String hash) {
+		this.senha = hash;
+	}
 } 

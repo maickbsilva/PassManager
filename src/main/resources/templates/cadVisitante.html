@@ -9,38 +9,39 @@
 
 	<form method="post" action="salvarVisitante">
 
-		<input type="hidden" name="id" />
+		<input type="hidden" name="id" th:value="${v?.id}"/>
 
 		<div>
-			nome <input type="text" name="nome">
+			nome <input type="text" name="nome" th:value="${v?.nome}">
 		</div>
 		<br>
 		<div>
-			rg <input type="text" name="rg">
-		</div>
-		<br>
-
-		<div>
-			foto <input type="text" name="foto">
-		</div>
-		<br>
-		<div>
-			preferencial <input type="checkbox" name="pref">
+			rg <input type="text" name="rg" th:value="${v?.rg}">
 		</div>
 		<br>
 
 		<div>
-			email <input type="email" name="email">
+			foto <input type="text" name="foto" th:value="${v?.foto}">
 		</div>
 		<br>
 		<div>
-			telefone <input type="text" name="telefone">
+			preferencial <input type="checkbox" name="pref" th:checked="${v?.pref}">
 		</div>
 		<br>
 
 		<div>
-			<select name="portaria.id">
-				<option th:each="p: ${portaria}" th:text="${p.nome}" th:value="${p.id}"></option>
+			email <input type="email" name="email" th:value="${v?.email}">
+		</div>
+		<br>
+		<div>
+			telefone <input type="text" name="telefone" th:value="${v?.telefone}">
+		</div>
+		<br>
+
+		<div>
+			<select name="porteiro.id">
+			<!-- PEGAR O PORTEIRO QUE REALIZOU A SESSAO -->
+				<option th:each="p: ${ports}" th:text="${p.nome}" th:value="${p.id}"></option>
 			</select> <label>Nome do porteiro cadastrante</label>
 		</div>
 		<br>

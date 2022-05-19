@@ -9,14 +9,14 @@
 
 	<form method="post" action="salvarPortaria">
 
-		<input type="hidden" name="id" />
+		<input type="hidden" name="id" th:value="${p?.id}" />
 
 		<div>
-			nome <input type="text" name="nome">
+			nome <input type="text" name="nome" th:value="${p?.nome}">
 		</div>
 		<br>
 		<div>
-			login <input type="text" name="login">
+			login <input type="text" name="login" th:value="${p?.login}">
 		</div>
 		<br>
 		<div>

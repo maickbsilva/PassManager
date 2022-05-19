@@ -9,10 +9,10 @@
 
 	<form method="post" action="salvarAssunto">
 
-		<input type="hidden" name="id"></input>
+		<input type="hidden" name="id" th:value="${a?.id}"></input>
 
 		<div>
-			assunto <input type="text" name="descAssunto" />
+			assunto <input type="text" name="descAssunto" th:value="${a?.descAssunto}"/>
 		</div>
 		<br>		
 		<div>

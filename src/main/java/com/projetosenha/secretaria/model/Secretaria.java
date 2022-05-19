@@ -28,19 +28,17 @@ public class Secretaria {
 	@NotEmpty
 	private String senha;
 
-	/* metodo set que aplica o hash na senha
-	public void setSenha(String senha) {
-
-		this.senha = HashUtil.hash(senha);
-	}
-
-	// método que "seta" o hash na senha
-	public void setSenhaComHash(String hash) {
-		this.senha = hash;
-	}*/
-
 	@Column(nullable = false, unique = true)
 	@NotEmpty
 	private String matricula;
+
+	// metodo set que aplica o hash na senha
+	public void setSenha(String senha) {
+		this.senha = HashUtil.hash(senha);
+	}
+	//para comparar e atualizar
+	public void setSenhaComHash(String hash) {
+		this.senha = hash;
+	}
 
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Lista Assunto</h1>
+
+	<table class="striped">
+		<thead>
+			<th>Id</th>
+			<th>Des Assunto:</th>
+			<th>Alterar</th>
+			<th>Excluir</th>
+		</thead>
+
+		<tbody>
+			<tr th:each="a:${assu}">
+
+				<td th:text="${a.id}" />
+				<td th:text="${a.descAssunto}" />
+				<td><a th:href="@{/alterarA(id=${a.id})}">Alterar</a></td>
+
+				<td><a
+					th:attr="onclick=|return confirm('Deseja excluir: ${a.descAssunto}')|"
+					th:href="@{/excluirA(id=${a.id})}">Excluir </a></td>
+
+			</tr>
+
+		</tbody>
+	</table>
+
+
+</body>
+</html>
