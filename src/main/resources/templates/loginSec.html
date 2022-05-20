@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>LOGIN SECRETARIA</h1>
+	<form method="post" action="login">
+		<input type="hidden" name="id" th:value="${c?.id}" />
+
+		<div>
+			matricula <input type="text" name="matricula">
+		</div>
+
+		<div>
+			senha <input type="password" name="senha">
+		</div>
+
+		<div>
+			<button type="submit">Login</button>
+		</div>
+	</form>
+
+</body>
+</html>
