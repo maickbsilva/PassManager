@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Gera Atendimento</h1>
+
+	<form method="post" action="">
+
+		<div>
+			<select name="assunto.id">
+				<option th:each="a: ${assunto}" th:text="${a.descAssunto}"
+					th:value="${a.id}"></option>
+			</select> <label>Assuntos</label>
+		</div>
+		<br>
+		<div>
+			 <input type="text" name="visitante" th:value="${visitante?.id}" />
+				<!-- FAZER APARECER O ID E NOME DO VISITANTE -->
+		</div>
+		<div>
+			<button type="submit">GERAR</button>
+		</div>
+	</form>
+</body>
+</html>

@@ -17,8 +17,10 @@
 			<th>Email</th>
 			<th>Telefone</th>
 			<th>Porteiro cad</th>
-			<th>Alterar</th>
-			<th>Excluir</th>
+			<th>#</th>
+			<th>#</th>
+			<th>#</th>
+
 		</thead>
 
 		<tbody>
@@ -31,12 +33,13 @@
 				<td th:text="${v.pref}" />
 				<td th:text="${v.email}" />
 				<td th:text="${v.telefone}" />
-				<td th:text="${v.porteiro?.nome}"/>
+				<td th:text="${v.porteiro?.nome}" />
 				<td><a th:href="@{/alterarV(id=${v.id})}">Alterar</a></td>
-
 				<td><a
 					th:attr="onclick=|return confirm('Deseja excluir: ${v.nome}')|"
 					th:href="@{/excluirV(id=${v.id})}">Excluir </a></td>
+				<td><a th:href="@{/geraAtendimento(id=${v.id})}">Gerar Atendimento</a></td>
+
 
 			</tr>
 
