@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -10,16 +10,16 @@
 	<form method="post" action="">
 
 		<div>
-			<select name="assunto.id">
+			<label>Assuntos</label> <select name="assunto.id">
 				<option th:each="a: ${assunto}" th:text="${a.descAssunto}"
 					th:value="${a.id}"></option>
-			</select> <label>Assuntos</label>
+			</select>
 		</div>
 		<br>
 		<div>
-			 <input type="text" name="visitante" th:value="${visitante?.id}" />
-				<!-- FAZER APARECER O ID E NOME DO VISITANTE -->
+			<input type="text" name="visitante.id" th:value="${v.nome}" disabled="disabled"/>
 		</div>
+		<br>
 		<div>
 			<button type="submit">GERAR</button>
 		</div>

@@ -19,15 +19,16 @@ public class GeraAtendimentoController {
 	@Autowired
 	private AssuntoRepository repositoryA;
 	
+	@Autowired
 	private VisitanteRepository repositoryV;
 	
 	@RequestMapping("geraAtendimento")
-	public String pagAtendimento(Model model){
+	public String pagAtendimento(Model model, Long id){
+		
 		model.addAttribute("assunto", repositoryA.findAll());
-		//Visitante visit = repositoryV.findById(id).get();
+		model.addAttribute("v", repositoryV.findById(id));
+		Visitante t = repositoryV.findById(id).get();
+		model.addAttribute("v", t);
 		return "geraAtendimento";
 	}
-	
-	
-
 }

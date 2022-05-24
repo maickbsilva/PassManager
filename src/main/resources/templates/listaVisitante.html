@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -7,6 +7,12 @@
 <body>
 	<h1>Lista Visitante</h1>
 
+	<form action="/buscar">
+		Buscar por RG <br> <input type="search" name="rg"/>
+		<button type="submit">Buscar</button>
+	</form>
+
+	<p>
 	<table class="striped">
 		<thead>
 			<th>Id</th>
@@ -38,7 +44,8 @@
 				<td><a
 					th:attr="onclick=|return confirm('Deseja excluir: ${v.nome}')|"
 					th:href="@{/excluirV(id=${v.id})}">Excluir </a></td>
-				<td><a th:href="@{/geraAtendimento(id=${v.id})}">Gerar Atendimento</a></td>
+				<td><a th:href="@{/geraAtendimento(id=${v.id})}">Gerar
+						Atendimento</a></td>
 
 
 			</tr>
