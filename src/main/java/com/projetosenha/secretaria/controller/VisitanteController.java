@@ -2,7 +2,6 @@ package com.projetosenha.secretaria.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.projetosenha.secretaria.model.Portaria;
 import com.projetosenha.secretaria.model.Visitante;
 import com.projetosenha.secretaria.repository.PortariaRepository;
@@ -79,4 +77,11 @@ public class VisitanteController {
 		repository.deleteById(id);
 		return "redirect:listaVisit/1";
 	}
+	
+	@RequestMapping("buscar")
+	public String buscaPorRG(String rg, Model model) {
+		model.addAttribute("visits", repository.findByRg(rg));
+		return "listaVisitante";
+	}
+	
 }

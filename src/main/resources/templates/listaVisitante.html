@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -7,18 +7,25 @@
 <body>
 	<h1>Lista Visitante</h1>
 
+	<form action="/buscar">
+		Buscar por RG <br> <input type="search" name="rg"/>
+		<button type="submit">Buscar</button>
+	</form>
+
+	<p>
 	<table class="striped">
 		<thead>
 			<th>Id</th>
 			<th>Nome:</th>
 			<th>RG</th>
 			<th>Foto</th>
-			<th>Pref</th>
 			<th>Email</th>
 			<th>Telefone</th>
 			<th>Porteiro cad</th>
-			<th>Alterar</th>
-			<th>Excluir</th>
+			<th>#</th>
+			<th>#</th>
+			<th>#</th>
+
 		</thead>
 
 		<tbody>
@@ -28,15 +35,16 @@
 				<td th:text="${v.nome}" />
 				<td th:text="${v.rg}" />
 				<td th:text="${v.foto}" />
-				<td th:text="${v.pref}" />
 				<td th:text="${v.email}" />
 				<td th:text="${v.telefone}" />
-				<td th:text="${v.porteiro?.nome}"/>
+				<td th:text="${v.porteiro?.nome}" />
 				<td><a th:href="@{/alterarV(id=${v.id})}">Alterar</a></td>
-
 				<td><a
 					th:attr="onclick=|return confirm('Deseja excluir: ${v.nome}')|"
 					th:href="@{/excluirV(id=${v.id})}">Excluir </a></td>
+				<td><a th:href="@{/geraAtendimento(id=${v.id})}">Gerar
+						Atendimento</a></td>
+
 
 			</tr>
 

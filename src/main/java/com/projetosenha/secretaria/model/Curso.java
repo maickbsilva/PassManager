@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -27,5 +28,23 @@ public class Curso {
 	private String matriculaInicio;
 	
 	private String matriculaExpiracao;
+	
+	@ManyToOne
+	private TipoCurso tpCurso;
+	
+	@ManyToOne
+	private PeriodoCurso pCurso;
+	
+	private int idadeMinima;
+	
+	private String duracao;
+	
+	//private String periodo;
+	
+	//private int idadeMinina;
+	
+	//private String tipocurso
+	
+	//private String duracao;
 
 }

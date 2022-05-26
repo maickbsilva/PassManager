@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://tymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Gera Atendimento</h1>
+
+	<form method="post" action="salvarGeraAt">
+
+		<div>
+			<label>Assuntos</label> <select name="assunto.id">
+				<option th:each="a: ${assunto}" th:text="${a.descAssunto}"
+					th:value="${a.id}"></option>
+			</select>
+		</div>
+		<br>
+		<div>
+			<input type="text" name="visitante.id" th:value="${v.nome}" disabled="disabled"/>
+			<input type="hidden" name="visitante.id" th:value="${v.id}"/>
+		</div>
+		<br>
+		<div>
+			preferencial <input type="checkbox" name="pref">
+		</div>
+		<div>
+			<button type="submit">GERAR</button>
+		</div>
+	</form>
+</body>
+</html>

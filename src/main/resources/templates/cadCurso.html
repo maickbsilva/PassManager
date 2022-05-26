@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -16,17 +16,46 @@
 		</div>
 		<br>
 		<div>
-			matricula inicio <input type="date" name="matriculaInicio" th:value="${c?.matriculaInicio}">
+			matricula inicio <input type="date" name="matriculaInicio"
+				th:value="${c?.matriculaInicio}">
 		</div>
 		<br>
 		<div>
-			matricula expiracao <input type="date" name="matriculaExpiracao" th:value="${c?.matriculaExpiracao}">
+			matricula expiracao <input type="date" name="matriculaExpiracao"
+				th:value="${c?.matriculaExpiracao}">
+		</div>
+		<p>
+		<div>
+			<select name="tpCurso.id">
+				<label>Tipo do curso</label>
+				<option th:each="tc: ${tipos}" th:text="${tc.tpCurso}"
+					th:value="${tc.id}"></option>
+			</select>
+		</div>
+		<p>
+		<div>
+			<select name="pCurso.id">
+				<label>Periodo do curso</label>
+				<option th:each="pc: ${periodocurso}" th:text="${pc.periodo}"
+					th:value="${pc.id}"></option>
+			</select>
+		</div>
+
+		<br>
+		<div>
+			idade minima <input type="number" name="idadeMinima"
+				th:value="${c?.idadeMinima}">
+		</div>
+		<br> <br>
+		<div>
+			duracao <input type="text" name="duracao" th:value="${c?.duracao}">
 		</div>
 		<br>
-		
 		<div>
 			<button type="submit">Cadastrar</button>
 		</div>
+		<br>
+
 	</form>
 </body>
 </html>

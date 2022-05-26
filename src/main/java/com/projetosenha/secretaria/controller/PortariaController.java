@@ -70,7 +70,7 @@ public class PortariaController {
 			return "redirect:/";
 		} else {
 			session.setAttribute("portLogado", port);
-			return "redirect:/listaPort";
+			return "redirect:/listaVisit/1";
 		}
 	}
 

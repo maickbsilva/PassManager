@@ -94,7 +94,7 @@ public class SecretariaController {
 			return "redirect:/";
 		} else {
 			session.setAttribute("secLogado", sec);
-			return "redirect:/listaSec/1";
+			return "redirect:/listaVisit/1";
 		}
 	}
 

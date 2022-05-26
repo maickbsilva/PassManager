@@ -17,6 +17,8 @@ import com.projetosenha.secretaria.model.Curso;
 import com.projetosenha.secretaria.model.Portaria;
 import com.projetosenha.secretaria.model.Visitante;
 import com.projetosenha.secretaria.repository.CursoRepository;
+import com.projetosenha.secretaria.repository.PeriodoCursoRepository;
+import com.projetosenha.secretaria.repository.TipoCursoRepository;
 
 @Controller
 public class CursoController {
@@ -24,8 +26,16 @@ public class CursoController {
 	@Autowired
 	private CursoRepository repository;
 	
+	@Autowired
+	private TipoCursoRepository repositoryTC;
+	
+	@Autowired
+	private PeriodoCursoRepository repositoryPC;
+	
 	@RequestMapping("cadCurso")
-	public String acessoSec() {
+	public String acessoSec(Model model) {
+		model.addAttribute("tipos",repositoryTC.findAll());
+		model.addAttribute("periodocurso", repositoryPC.findAll());
 		return "cadCurso";
 	}
 	
