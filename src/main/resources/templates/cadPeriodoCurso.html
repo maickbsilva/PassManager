@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://tymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cadastro de curso</h1>
+
+	<form method="post" action="salvarPC">
+
+		<input type="hidden" name="id" />
+
+		<div>
+			Periodo <input type="text" name="periodo" th:value="${pc?.periodo}">
+		</div>
+		<br>
+		<div>
+			<button type="submit">Cadastrar</button>
+		</div>
+		<br>
+
+	</form>
+</body>
+</html>

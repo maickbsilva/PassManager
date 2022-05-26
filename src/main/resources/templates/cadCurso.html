@@ -24,23 +24,31 @@
 			matricula expiracao <input type="date" name="matriculaExpiracao"
 				th:value="${c?.matriculaExpiracao}">
 		</div>
-		<br>
+		<p>
 		<div>
 			<select name="tpCurso.id">
-				<option th:each="tc: ${tipos}" th:text="${tc.tpCurso}" th:value="${tc.id}"></option>
+				<label>Tipo do curso</label>
+				<option th:each="tc: ${tipos}" th:text="${tc.tpCurso}"
+					th:value="${tc.id}"></option>
 			</select>
-			<label>Tipo do curso</label>
+		</div>
+		<p>
+		<div>
+			<select name="pCurso.id">
+				<label>Periodo do curso</label>
+				<option th:each="pc: ${periodocurso}" th:text="${pc.periodo}"
+					th:value="${pc.id}"></option>
+			</select>
+		</div>
 
-
-
-
-			<!-- <select name="porteiro.id">
-			PEGAR O PORTEIRO QUE REALIZOU A SESSAO
-				<option th:each="p: ${ports}" th:text="${p.nome}" th:value="${p.id}"></option>
-			</select> -->
-
-
-
+		<br>
+		<div>
+			idade minima <input type="number" name="idadeMinima"
+				th:value="${c?.idadeMinima}">
+		</div>
+		<br> <br>
+		<div>
+			duracao <input type="text" name="duracao" th:value="${c?.duracao}">
 		</div>
 		<br>
 		<div>

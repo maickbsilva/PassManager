@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Lista Periodo Cursos</h1>
+
+	<table class="striped">
+		<thead>
+			<th>Id</th>
+			<th>Periodo:</th>
+			<th>Alterar</th>
+			<th>Excluir</th>
+		</thead>
+
+		<tbody>
+			<tr th:each="pc:${pcurso}">
+
+				<td th:text="${pc.id}" />
+				<td th:text="${pc.periodo}" />
+				<td><a th:href="@{/alterarPc(id=${pc.id})}">Alterar</a></td>
+				<td><a th:href="@{/excluirPc(id=${pc.id})}">Excluir</a></td>
+
+			</tr>
+
+		</tbody>
+	</table>
+
+
+</body>
+</html>

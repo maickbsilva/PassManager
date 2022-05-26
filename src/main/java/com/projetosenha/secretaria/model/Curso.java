@@ -32,6 +32,13 @@ public class Curso {
 	@ManyToOne
 	private TipoCurso tpCurso;
 	
+	@ManyToOne
+	private PeriodoCurso pCurso;
+	
+	private int idadeMinima;
+	
+	private String duracao;
+	
 	//private String periodo;
 	
 	//private int idadeMinina;
