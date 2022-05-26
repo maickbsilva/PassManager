@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -16,17 +16,38 @@
 		</div>
 		<br>
 		<div>
-			matricula inicio <input type="date" name="matriculaInicio" th:value="${c?.matriculaInicio}">
+			matricula inicio <input type="date" name="matriculaInicio"
+				th:value="${c?.matriculaInicio}">
 		</div>
 		<br>
 		<div>
-			matricula expiracao <input type="date" name="matriculaExpiracao" th:value="${c?.matriculaExpiracao}">
+			matricula expiracao <input type="date" name="matriculaExpiracao"
+				th:value="${c?.matriculaExpiracao}">
 		</div>
 		<br>
-		
+		<div>
+			<select name="tpCurso.id">
+				<option th:each="tc: ${tipos}" th:text="${tc.tpCurso}" th:value="${tc.id}"></option>
+			</select>
+			<label>Tipo do curso</label>
+
+
+
+
+			<!-- <select name="porteiro.id">
+			PEGAR O PORTEIRO QUE REALIZOU A SESSAO
+				<option th:each="p: ${ports}" th:text="${p.nome}" th:value="${p.id}"></option>
+			</select> -->
+
+
+
+		</div>
+		<br>
 		<div>
 			<button type="submit">Cadastrar</button>
 		</div>
+		<br>
+
 	</form>
 </body>
 </html>

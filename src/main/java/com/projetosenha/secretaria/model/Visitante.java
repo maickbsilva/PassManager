@@ -28,8 +28,6 @@ public class Visitante {
 
 	private String foto;
 
-	private Boolean pref;
-
 	private String email;
 
 	private String telefone;

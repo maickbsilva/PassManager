@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #427AAA;
+    padding:20px;
+    
+}
+header>span{
+    font-size: 2em;
+}
+.h1-header{
+    padding-top: 20px;
+}
+.logo{
+    width:20%;
+}
+h1{
+    color:#FFF;
+    text-align: center;
+}
+span{
+    color:#FFF;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height:60vh;
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+img{
+    width:100%;
+}
+#senha{
+    font-size:5em;
+    color: red;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+    top:20%;
+    text-transform: uppercase;
+}
+.h3-senha{
+    color: black;
+    font-weight: 400;
+    
+}
+.ult-chamds{
+    display: block;
+    background-color: #D11D1D;
+    padding:25px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+.ul-ult-chamds{
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    justify-content: space-around;
+    padding: 25px;
+}
+.h1-ult-chamds{
+    color: black;
+    font-size: 2em;
+}
+li{ 
+    font-size: 4em;
+    color:white;
+    
+}
+</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/css/tela-senha.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-principal">
+        <header>
+            <img class="logo" src="https://www.novaconcursos.com.br/portal/wp-content/uploads/2015/10/senai-logo.jpg" />
+            <h1 class="h1-header">Escola Senai “Ricardo Lerner”</h1><span >12:00:00</span>
+        </header>
+        
+    <div class="grid-container">
+        <div class="grid-item" id="senha">senha
+
+            <h3 class="h3-senha">MP0001</h3>
+        </div>
+        <div class="grid-item"><img src="images\img1-carrousel.png" /></div>
+    </div>
+    <section class="ult-chamds"> 
+        <h1 class="h1-ult-chamds">Ultimas chamadas</h1>
+        
+        <ul class="ul-ult-chamds">
+            <li>MP0001</li>
+            <li>MP0002</li>
+            <li>MP0003</li>
+            <li>MP0004</li>
+            <li>MP0004</li>
+        </ul>
+        <!-- spans ^ -->
+    </section>
+</body>
+</html>
+

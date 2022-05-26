@@ -15,12 +15,4 @@ public interface VisitanteRepository extends PagingAndSortingRepository<Visitant
 
 	//public Visitante findByRg(String rg);
 	
-	/**
- * 	@Query("SELECT t FROM TipoRestaurante t WHERE t.nome LIKE %:p%")
-	public List<TipoRestaurante> buscaPorNome(@Param("p") String nome);
- * 
- * 
- * 	public Secretaria findByMatriculaAndSenha(String matricula, String senha);
-
- */
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://tymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Lista Cursos</h1>
+
+	<table class="striped">
+		<thead>
+			<th>Id</th>
+			<th>Tipos</th>
+			<th>Alterar</th>
+			<th>Excluir</th>
+		</thead>
+
+		<tbody>
+			<tr th:each="tc:${tipos}">
+
+				<td th:text="${tc.id}" />
+				<td th:text="${tc.tpCurso}" />
+				
+				<td><a th:href="@{/alterarTC(id=${tc.id})}">Alterar</a></td>
+
+				<td><a th:href="@{/excluirTC(id=${tc.id})}">Excluir </a></td>
+
+			</tr>
+
+		</tbody>
+	</table>
+
+
+</body>
+</html>

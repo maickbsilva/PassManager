@@ -17,6 +17,7 @@ import com.projetosenha.secretaria.model.Curso;
 import com.projetosenha.secretaria.model.Portaria;
 import com.projetosenha.secretaria.model.Visitante;
 import com.projetosenha.secretaria.repository.CursoRepository;
+import com.projetosenha.secretaria.repository.TipoCursoRepository;
 
 @Controller
 public class CursoController {
@@ -24,13 +25,18 @@ public class CursoController {
 	@Autowired
 	private CursoRepository repository;
 	
+	@Autowired
+	private TipoCursoRepository repositoryTC;
+	
 	@RequestMapping("cadCurso")
-	public String acessoSec() {
+	public String acessoSec(Model model) {
+		model.addAttribute("tipos",repositoryTC.findAll());
 		return "cadCurso";
 	}
 	
 	@RequestMapping(value = "salvarCurso", method = RequestMethod.POST)
 	public String salvarCurso(Curso curso) {
+		
 		repository.save(curso);
 		System.out.println(curso);
 		return "redirect:cadCurso";

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -19,13 +19,8 @@
 			rg <input type="text" name="rg" th:value="${v?.rg}">
 		</div>
 		<br>
-
 		<div>
 			foto <input type="text" name="foto" th:value="${v?.foto}">
-		</div>
-		<br>
-		<div>
-			preferencial <input type="checkbox" name="pref" th:checked="${v?.pref}">
 		</div>
 		<br>
 

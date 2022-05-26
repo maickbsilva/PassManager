@@ -1,32 +1,19 @@
 package com.projetosenha.secretaria.model;
 
-import java.util.Calendar;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Data;
 
 @Data
 @Entity
-public class GeraAtendimento {
-	
+public class TipoCurso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
-	private Assunto assunto;
+	private String tpCurso;
 	
-	@ManyToOne
-	private Visitante visitante;
-	
-	private Calendar horaAtendimento;
-	
-	private Boolean pref;
 }

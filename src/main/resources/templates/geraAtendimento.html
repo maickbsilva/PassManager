@@ -7,7 +7,7 @@
 <body>
 	<h1>Gera Atendimento</h1>
 
-	<form method="post" action="">
+	<form method="post" action="salvarGeraAt">
 
 		<div>
 			<label>Assuntos</label> <select name="assunto.id">
@@ -18,8 +18,12 @@
 		<br>
 		<div>
 			<input type="text" name="visitante.id" th:value="${v.nome}" disabled="disabled"/>
+			<input type="hidden" name="visitante.id" th:value="${v.id}"/>
 		</div>
 		<br>
+		<div>
+			preferencial <input type="checkbox" name="pref">
+		</div>
 		<div>
 			<button type="submit">GERAR</button>
 		</div>
