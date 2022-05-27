@@ -1,5 +1,6 @@
 package com.projetosenha.secretaria.controller;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
 
@@ -41,7 +42,8 @@ public class GeraAtendimentoController {
 
 	@RequestMapping("salvarGeraAt")
 	public String salvarGeraAt(GeraAtendimento gera) {
-		gera.setHoraAtendimento(Calendar.getInstance());
+		Date now = new Date(System.currentTimeMillis());
+		gera.setHoraAtendimento(now);
 		repository.save(gera);
 		return "redirect:listaVisit/1";
 	}
