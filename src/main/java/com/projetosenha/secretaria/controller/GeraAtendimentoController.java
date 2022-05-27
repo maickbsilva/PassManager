@@ -31,7 +31,6 @@ public class GeraAtendimentoController {
 
 	@RequestMapping("geraAtendimento")
 	public String pagAtendimento(Model model, Long id) {
-
 		model.addAttribute("assunto", repositoryA.findAll());
 		model.addAttribute("v", repositoryV.findById(id));
 		Visitante t = repositoryV.findById(id).get();
@@ -52,5 +51,19 @@ public class GeraAtendimentoController {
 	public String pagTela() {
 		return "telaSenha";
 	}
+	
+	@RequestMapping("painelSenha")
+	public String telaSenha(Model model) {
+		model.addAttribute("telasenha", repository.findAll());
+		return "painelSenha";
+	}
 
+	@RequestMapping("atualizaSenha")
+	public String atualizaSenha(Long id, Model model) {
+		GeraAtendimento gera = repository.findById(id).get();
+		gera.setAtendimento(true);
+		model.addAttribute("telasenha", gera);
+		repository.save(gera);
+		return "forward:painelSenha";
+	}
 }
