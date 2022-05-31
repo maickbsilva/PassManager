@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,7 @@ public class GeraAtendimentoController {
 
 	@Autowired
 	private GeraAtendimentoRepository repository;
-
+	
 	@Autowired
 	private AssuntoRepository repositoryA;
 
@@ -55,8 +57,8 @@ public class GeraAtendimentoController {
 
 	@RequestMapping("painelSenha")
 	public String telaSenha(Model model) {
+		model.addAttribute("primeiro", repository.buscaPorDia().get(0));
 		model.addAttribute("telasenha", repository.buscaPorDia());
-		//model.addAttribute("somenteUm", repository.buscaSomenteUm());
 		return "painelSenha";
 	}
 

@@ -10,17 +10,32 @@
 	<table class="striped">
 		<thead>
 			<th>Nome</th>
-			<th>Data AT</th>
 			<th>PREF</th>
 			<th>Atendimento</th>
 		</thead>
 		<tbody>
-			<tr th:each="ts:${telasenha}">
+			<tr th:each="ts:${primeiro}">
 				<td th:text="${ts.visitante.nome}" />
-				<td th:text="${ts.horaAtendimento}" />
 				<td th:text="${ts.pref}" />
 				<td th:text="${ts.atendimento}" />
-				<td><a th:href="@{/atualizaSenha(id=${ts.id})}">Encerrar Atendimento</a></td>
+				<td><a th:href="@{/atualizaSenha(id=${ts.id})}">Encerrar
+						Atendimento</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+	<table class="striped">
+	<h1>PROXIMAS SENHAS</h1>
+		<thead>
+			<th>Nome</th>
+			<th>PREF</th>
+			<th>Assunto</th>
+		</thead>
+		<tbody>
+			<tr th:each="ts:${telasenha}">
+				<td th:text="${ts.visitante.nome}" />
+				<td th:text="${ts.pref}" />
+				<td th:text="${ts.assunto.descAssunto}" />
 			</tr>
 		</tbody>
 	</table>
