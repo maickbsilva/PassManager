@@ -3,6 +3,7 @@ package com.projetosenha.secretaria.controller;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,10 +52,11 @@ public class GeraAtendimentoController {
 	public String pagTela() {
 		return "telaSenha";
 	}
-	
+
 	@RequestMapping("painelSenha")
 	public String telaSenha(Model model) {
-		model.addAttribute("telasenha", repository.findAll());
+		model.addAttribute("telasenha", repository.buscaPorDia());
+		//model.addAttribute("somenteUm", repository.buscaSomenteUm());
 		return "painelSenha";
 	}
 

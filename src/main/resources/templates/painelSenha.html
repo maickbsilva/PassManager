@@ -10,12 +10,15 @@
 	<table class="striped">
 		<thead>
 			<th>Nome</th>
+			<th>Data AT</th>
+			<th>PREF</th>
 			<th>Atendimento</th>
 		</thead>
 		<tbody>
 			<tr th:each="ts:${telasenha}">
-				<td th:text="${ts.id}" />
-				<td th:text="${ts.visitante?.nome}" />
+				<td th:text="${ts.visitante.nome}" />
+				<td th:text="${ts.horaAtendimento}" />
+				<td th:text="${ts.pref}" />
 				<td th:text="${ts.atendimento}" />
 				<td><a th:href="@{/atualizaSenha(id=${ts.id})}">Encerrar Atendimento</a></td>
 			</tr>
