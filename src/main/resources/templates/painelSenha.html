@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://tymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Painel SENHA</h1>
+	<p>
+	<table class="striped">
+		<thead>
+			<th>Nome</th>
+			<th>PREF</th>
+			<th>Atendimento</th>
+		</thead>
+		<tbody>
+			<tr th:each="ts:${primeiro}">
+				<td th:text="${ts.visitante.nome}" />
+				<td th:text="${ts.pref}" />
+				<td th:text="${ts.atendimento}" />
+				<td><a th:href="@{/atualizaSenha(id=${ts.id})}">Encerrar
+						Atendimento</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+	<table class="striped">
+	<h1>PROXIMAS SENHAS</h1>
+		<thead>
+			<th>Nome</th>
+			<th>PREF</th>
+			<th>Assunto</th>
+		</thead>
+		<tbody>
+			<tr th:each="ts:${telasenha}">
+				<td th:text="${ts.visitante.nome}" />
+				<td th:text="${ts.pref}" />
+				<td th:text="${ts.assunto.descAssunto}" />
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
+</html>

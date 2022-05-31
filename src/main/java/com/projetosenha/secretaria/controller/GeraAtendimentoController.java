@@ -1,9 +1,13 @@
 package com.projetosenha.secretaria.controller;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +25,7 @@ public class GeraAtendimentoController {
 
 	@Autowired
 	private GeraAtendimentoRepository repository;
-
+	
 	@Autowired
 	private AssuntoRepository repositoryA;
 
@@ -30,7 +34,6 @@ public class GeraAtendimentoController {
 
 	@RequestMapping("geraAtendimento")
 	public String pagAtendimento(Model model, Long id) {
-
 		model.addAttribute("assunto", repositoryA.findAll());
 		model.addAttribute("v", repositoryV.findById(id));
 		Visitante t = repositoryV.findById(id).get();
@@ -41,7 +44,8 @@ public class GeraAtendimentoController {
 
 	@RequestMapping("salvarGeraAt")
 	public String salvarGeraAt(GeraAtendimento gera) {
-		gera.setHoraAtendimento(Calendar.getInstance());
+		Date now = new Date(System.currentTimeMillis());
+		gera.setHoraAtendimento(now);
 		repository.save(gera);
 		return "redirect:listaVisit/1";
 	}
@@ -51,4 +55,19 @@ public class GeraAtendimentoController {
 		return "telaSenha";
 	}
 
+	@RequestMapping("painelSenha")
+	public String telaSenha(Model model) {
+		model.addAttribute("primeiro", repository.buscaPorDia().get(0));
+		model.addAttribute("telasenha", repository.buscaPorDia());
+		return "painelSenha";
+	}
+
+	@RequestMapping("atualizaSenha")
+	public String atualizaSenha(Long id, Model model) {
+		GeraAtendimento gera = repository.findById(id).get();
+		gera.setAtendimento(true);
+		model.addAttribute("telasenha", gera);
+		repository.save(gera);
+		return "forward:painelSenha";
+	}
 }

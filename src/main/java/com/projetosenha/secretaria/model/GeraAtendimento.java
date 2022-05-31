@@ -1,15 +1,11 @@
 package com.projetosenha.secretaria.model;
 
-import java.util.Calendar;
-
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import lombok.Data;
 
 @Data
@@ -26,7 +22,9 @@ public class GeraAtendimento {
 	@ManyToOne
 	private Visitante visitante;
 	
-	private Calendar horaAtendimento;
+	private Date horaAtendimento;
 	
-	private Boolean pref;
+	private Boolean pref = false;
+	
+	private Boolean atendimento = false;
 }
