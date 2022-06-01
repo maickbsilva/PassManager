@@ -7,5 +7,7 @@ import com.projetosenha.secretaria.model.Secretaria;
 
 public interface PortariaRepository extends PagingAndSortingRepository<Portaria, Long>{
 
-	public Portaria findByLoginAndSenha(String login, String senha);
+	public Portaria findByLoginAndSenhaAndAtivo(String login, String senha, boolean ativo);
+	
+	//acrescentar bool ativo
 }

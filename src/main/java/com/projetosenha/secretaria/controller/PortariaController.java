@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,6 +35,7 @@ public class PortariaController {
 
 	@RequestMapping(value = "salvarPortaria", method = RequestMethod.POST)
 	public String salvarPortaria(Portaria portaria) {
+		portaria.setAtivo(true);
 		repository.save(portaria);
 		System.out.println(portaria);
 		return "redirect:cadPortaria";
@@ -57,27 +59,36 @@ public class PortariaController {
 	@RequestMapping("excluirP")
 	public String excluir(Long id) {
 		repository.deleteById(id);
-		return "redirect:listaPort/1";
+		return "redirect:listaPort";
 	}
 
 	@RequestMapping("loginP")
 	@Publico
 	public String login(Portaria portLogin, RedirectAttributes attr, HttpSession session) {
-		Portaria port = repository.findByLoginAndSenha(portLogin.getLogin(), portLogin.getSenha());
-
+		Portaria port = repository.findByLoginAndSenhaAndAtivo(portLogin.getLogin(), portLogin.getSenha(), true);
 		if (port == null) {
 			attr.addAttribute("mensagemErro", "Login e/ou senha inválido(s)");
 			return "redirect:/";
 		} else {
 			session.setAttribute("portLogado", port);
-			return "redirect:/listaVisit/1";
+			return "telaInicioPortaria";
 		}
 	}
 
+	/*
+	 * else if (port.getAtivo() == false){ attr.addAttribute("mensagemErro",
+	 * "CADASTRO DESATIVADO"); }
+	 */
+	
 	@RequestMapping("loginPort")
 	@Publico
 	public String loginPort() {
 		return "loginPort";
+	}
+	
+	@RequestMapping("telaInicioPortaria")
+	public String telaInicialPortaria() {
+		return "telaInicioPortaria";
 	}
 
 }

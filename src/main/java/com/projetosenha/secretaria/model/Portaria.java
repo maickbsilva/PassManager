@@ -36,4 +36,6 @@ public class Portaria {
 	public void setSenhaComHash(String hash) {
 		this.senha = hash;
 	}
+	
+	private boolean ativo = false;
 } 
