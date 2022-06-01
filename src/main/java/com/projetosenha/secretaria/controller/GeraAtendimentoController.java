@@ -22,6 +22,8 @@ import com.projetosenha.secretaria.repository.VisitanteRepository;
 
 @Controller
 public class GeraAtendimentoController {
+	
+	GeraAtendimento tira1;
 
 	@Autowired
 	private GeraAtendimentoRepository repository;
@@ -57,8 +59,10 @@ public class GeraAtendimentoController {
 
 	@RequestMapping("painelSenha")
 	public String telaSenha(Model model) {
+		//passsa somente o primeiro indice da lista
 		model.addAttribute("primeiro", repository.buscaPorDia().get(0));
-		model.addAttribute("telasenha", repository.buscaPorDia());
+		//começa a lista a partir do segundo
+		model.addAttribute("telasenha", repository.buscaPorDia().listIterator(1));
 		return "painelSenha";
 	}
 

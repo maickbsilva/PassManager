@@ -9,12 +9,14 @@
 	<p>
 	<table class="striped">
 		<thead>
+			<th>ID</th>
 			<th>Nome</th>
 			<th>PREF</th>
 			<th>Atendimento</th>
 		</thead>
 		<tbody>
 			<tr th:each="ts:${primeiro}">
+				<td th:text="${ts.id}" />
 				<td th:text="${ts.visitante.nome}" />
 				<td th:text="${ts.pref}" />
 				<td th:text="${ts.atendimento}" />
@@ -27,12 +29,14 @@
 	<table class="striped">
 	<h1>PROXIMAS SENHAS</h1>
 		<thead>
+			<th>ID</th>
 			<th>Nome</th>
 			<th>PREF</th>
 			<th>Assunto</th>
 		</thead>
 		<tbody>
 			<tr th:each="ts:${telasenha}">
+				<td th:text="${ts.id}" />
 				<td th:text="${ts.visitante.nome}" />
 				<td th:text="${ts.pref}" />
 				<td th:text="${ts.assunto.descAssunto}" />

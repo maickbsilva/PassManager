@@ -30,6 +30,7 @@ public class SecretariaController {
 
 	@RequestMapping(value = "salvarSec", method = RequestMethod.POST)
 	public String salvarSec(Secretaria sec) {
+		sec.setAtivo(true);
 		repository.save(sec);
 		System.out.println(sec);
 		return "cadSecretaria";
@@ -87,14 +88,14 @@ public class SecretariaController {
 	@RequestMapping("login")
 	@Publico
 	public String login(Secretaria secLogin, RedirectAttributes attr, HttpSession session) {
-		Secretaria sec = repository.findByMatriculaAndSenha(secLogin.getMatricula(), secLogin.getSenha());
+		Secretaria sec = repository.findByMatriculaAndSenhaAndAtivo(secLogin.getMatricula(), secLogin.getSenha(), true);
 
 		if (sec == null) {
 			attr.addAttribute("mensagemErro", "Login e/ou senha inválido(s)");
 			return "redirect:/";
 		} else {
 			session.setAttribute("secLogado", sec);
-			return "redirect:/listaVisit/1";
+			return "redirect:/painelSenha";
 		}
 	}
 

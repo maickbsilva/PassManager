@@ -6,8 +6,7 @@
 </head>
 <body>
 	<h1>Lista Cursos</h1>
-
-	<table class="striped">
+	<a href="javascript:history.back()">VOLTAR</a>	<table class="striped">
 		<thead>
 			<th>Id</th>
 			<th>Nome:</th>
@@ -19,13 +18,11 @@
 
 		<tbody>
 			<tr th:each="c:${cursos}">
-
 				<td th:text="${c.id}" />
 				<td th:text="${c.nome}" />
 				<td th:text="${c.matriculaInicio}" />
 				<td th:text="${c.matriculaExpiracao}" />
 				<td><a th:href="@{/alterarC(id=${c.id})}">Alterar</a></td>
-
 				<td><a
 					th:attr="onclick=|return confirm('Deseja excluir: ${c.nome}')|"
 					th:href="@{/excluirC(id=${c.id})}">Excluir </a></td>

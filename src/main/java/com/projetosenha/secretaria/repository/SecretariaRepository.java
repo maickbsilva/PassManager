@@ -5,5 +5,5 @@ import com.projetosenha.secretaria.model.Secretaria;
 
 public interface SecretariaRepository extends PagingAndSortingRepository<Secretaria, Long>{
 
-	public Secretaria findByMatriculaAndSenha(String matricula, String senha);
+	public Secretaria findByMatriculaAndSenhaAndAtivo(String matricula, String senha, boolean ativo);
 }
