@@ -24,9 +24,9 @@ public class Curso {
 	@NotEmpty
 	@Column(nullable = false, unique = true)
 	private String nome;
-	
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private String matriculaInicio;
-	
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private String matriculaExpiracao;
 	
 	@ManyToOne

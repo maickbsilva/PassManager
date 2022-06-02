@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<h1>Lista Cursos</h1>
-	<a href="javascript:history.back()">VOLTAR</a>	<table class="striped">
+	<a href="javascript:history.back()">VOLTAR</a>
+	
+	<a href="/cadCurso">Cadastrar Curso</a>
+	
+	<form action="/buscarPorNome">
+		Buscar por Nome <br> <input type="search" name="nome" />
+		<button type="submit">Buscar</button>
+	</form>
+	<p>
+	<table class="striped" border="1">
 		<thead>
 			<th>Id</th>
 			<th>Nome:</th>
+			<th><a href="/buscarPorTpCurso" style="text-decoration:none">Tipo Curso</a></th>
 			<th>Matricula Inicio</th>
 			<th>Matricula Expiracao</th>
 			<th>Alterar</th>
@@ -20,7 +30,8 @@
 			<tr th:each="c:${cursos}">
 				<td th:text="${c.id}" />
 				<td th:text="${c.nome}" />
-				<td th:text="${c.matriculaInicio}" />
+				<td th:text="${c.tpCurso?.tpCurso}" />
+				<td th:text="${c.matriculaInicio}" /> <!-- colocar um format -->
 				<td th:text="${c.matriculaExpiracao}" />
 				<td><a th:href="@{/alterarC(id=${c.id})}">Alterar</a></td>
 				<td><a
