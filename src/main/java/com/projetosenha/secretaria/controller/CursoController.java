@@ -85,5 +85,45 @@ public class CursoController {
 		return "redirect:listaCurso/1";
 	}
 	
+	@RequestMapping("buscarPorNome")
+	public String buscaPorNome(String nome, Model model){
+		model.addAttribute("cursos", repository.findByNome(nome));
+		return "listaCurso";
+	}
+	
+	@RequestMapping("buscarPorTpCurso")
+	public String buscaPorTpCurso(Long tpCurso, Model model){
+		model.addAttribute("cursos", repository.buscaPorTpCurso(tpCurso));
+		return "listaCurso";
+	}
+	
+	
+	
+/**
+ * 
+ * 	@RequestMapping("buscar")
+	public String buscaPorRG(String rg, Model model) {
+		model.addAttribute("visits", repository.findByRg(rg));
+		return "listaVisitante";
+	}
+	
+	
+	
+	
+ * 	@RequestMapping("busca")
+	public String busca(String escolha, String palavra, Model model) {
+
+		if (escolha.equals("nome")) {
+			model.addAttribute("rests", repository.buscaPorNome(palavra));
+		} else if (escolha.equals("descricao")) {
+			model.addAttribute("rests", repository.buscaPorDescricao(palavra));
+		} else {
+
+			model.addAttribute("rests", repository.buscaPorPChave(palavra));
+		}
+
+		return "listaRest";
+	}
+ */
 	
 }

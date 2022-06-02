@@ -95,8 +95,13 @@ public class SecretariaController {
 			return "redirect:/";
 		} else {
 			session.setAttribute("secLogado", sec);
-			return "redirect:/painelSenha";
+			return "redirect:/telaInicioSec";
 		}
+	}
+	
+	@RequestMapping("telaInicioSec")
+	public String pagIniciaSecl() {
+		return "telaInicioSecretaria";
 	}
 
 	@RequestMapping("loginSec")
