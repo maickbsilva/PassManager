@@ -6,11 +6,16 @@
 </head>
 <body>
 	<h1>Lista Portaria</h1>
-
+	<p>
 	<a href="javascript:history.back()">VOLTAR</a>
-
+	<p>
 	<a href="/cadPortaria">Cadastrar Portaria</a>
-
+	<p>
+	<form action="/buscarPorNomeP">
+		Buscar por Nome <br> <input type="search" name="nome" />
+		<button type="submit">Buscar</button>
+	</form>
+	<p>
 	<table class="striped">
 		<thead>
 			<th>Id</th>
@@ -29,8 +34,8 @@
 				<td><a th:href="@{/alterarP(id=${p.id})}">Alterar</a></td>
 
 				<td><a
-					th:attr="onclick=|return confirm('Deseja excluir: ${p.nome}')|"
-					th:href="@{/excluirP(id=${p.id})}">Excluir </a></td>
+					th:attr="onclick=|return confirm('Deseja desativar: ${p.nome}')|"
+					th:href="@{/excluirP(id=${p.id})}">Desativar</a></td>
 
 			</tr>
 

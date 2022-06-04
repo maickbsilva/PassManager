@@ -3,6 +3,8 @@ package com.projetosenha.secretaria.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.projetosenha.secretaria.annotation.PortariaAnnotation;
+import com.projetosenha.secretaria.annotation.SecretariaAnnotation;
 import com.projetosenha.secretaria.model.Curso;
 import com.projetosenha.secretaria.model.Portaria;
 import com.projetosenha.secretaria.model.Visitante;
@@ -32,6 +36,7 @@ public class CursoController {
 	@Autowired
 	private PeriodoCursoRepository repositoryPC;
 	
+	@SecretariaAnnotation
 	@RequestMapping("cadCurso")
 	public String acessoSec(Model model) {
 		model.addAttribute("tipos",repositoryTC.findAll());
@@ -39,6 +44,7 @@ public class CursoController {
 		return "cadCurso";
 	}
 	
+	@SecretariaAnnotation
 	@RequestMapping(value = "salvarCurso", method = RequestMethod.POST)
 	public String salvarCurso(Curso curso) {
 		repository.save(curso);
@@ -46,6 +52,8 @@ public class CursoController {
 		return "redirect:cadCurso";
 	}
 	
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping("listaCurso/{page}")
 	public String listaPortaria(Model model, @PathVariable("page") int page) {
 
@@ -72,6 +80,7 @@ public class CursoController {
 
 	}
 	
+	@SecretariaAnnotation
 	@RequestMapping("alterarC")
 	public String alterar(Long id, Model model) {
 		Curso cursos = repository.findById(id).get();
@@ -79,51 +88,33 @@ public class CursoController {
 		return "forward:cadCurso";
 	}
 
+	@SecretariaAnnotation
 	@RequestMapping("excluirC")
 	public String excluir(Long id) {
 		repository.deleteById(id);
 		return "redirect:listaCurso/1";
 	}
 	
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping("buscarPorNome")
 	public String buscaPorNome(String nome, Model model){
 		model.addAttribute("cursos", repository.findByNome(nome));
 		return "listaCurso";
 	}
 	
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping("buscarPorTpCurso")
 	public String buscaPorTpCurso(Long tpCurso, Model model){
 		model.addAttribute("cursos", repository.buscaPorTpCurso(tpCurso));
 		return "listaCurso";
 	}
 	
-	
-	
-/**
- * 
- * 	@RequestMapping("buscar")
-	public String buscaPorRG(String rg, Model model) {
-		model.addAttribute("visits", repository.findByRg(rg));
-		return "listaVisitante";
+	@RequestMapping("logoutS")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
-	
-	
-	
-	
- * 	@RequestMapping("busca")
-	public String busca(String escolha, String palavra, Model model) {
-
-		if (escolha.equals("nome")) {
-			model.addAttribute("rests", repository.buscaPorNome(palavra));
-		} else if (escolha.equals("descricao")) {
-			model.addAttribute("rests", repository.buscaPorDescricao(palavra));
-		} else {
-
-			model.addAttribute("rests", repository.buscaPorPChave(palavra));
-		}
-
-		return "listaRest";
-	}
- */
 	
 }

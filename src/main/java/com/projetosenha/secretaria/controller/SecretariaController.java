@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.projetosenha.secretaria.annotation.Publico;
+import com.projetosenha.secretaria.annotation.SecretariaAnnotation;
 import com.projetosenha.secretaria.model.Secretaria;
 import com.projetosenha.secretaria.repository.SecretariaRepository;
 
@@ -23,11 +25,13 @@ public class SecretariaController {
 	@Autowired
 	private SecretariaRepository repository;
 
+	@SecretariaAnnotation
 	@RequestMapping("cadSec")
 	public String acessoSec() {
 		return "cadSecretaria";
 	}
-
+	
+	@SecretariaAnnotation
 	@RequestMapping(value = "salvarSec", method = RequestMethod.POST)
 	public String salvarSec(Secretaria sec) {
 		sec.setAtivo(true);
@@ -38,6 +42,7 @@ public class SecretariaController {
 	}
 
 	// request que leva para a lista
+	@SecretariaAnnotation
 	@RequestMapping("listaSec/{page}")
 	public String listaSecretaria(Model model, @PathVariable("page") int page) {
 
@@ -71,18 +76,30 @@ public class SecretariaController {
 		return "listaSecretaria";
 
 	}
-
+	
+	@SecretariaAnnotation
 	@RequestMapping("alterar")
 	public String alterar(Long id, Model model) {
 		Secretaria sec = repository.findById(id).get();
 		model.addAttribute("s", sec);
 		return "forward:cadSec";
 	}
-
+	
+	@SecretariaAnnotation
 	@RequestMapping("excluir")
-	public String excluir(Long id) {
-		repository.deleteById(id);
+	public String excluir(Long id, Model model) {
+		Secretaria sec = repository.findById(id).get();
+		sec.setAtivo(false);
+		model.addAttribute("s", sec);
+		repository.save(sec);
 		return "redirect:listaSec/1";
+	}
+	
+	@SecretariaAnnotation
+	@RequestMapping("buscarPorNomeS")
+	public String buscarPorNomeS(String nome, Model model) {
+		model.addAttribute("secs", repository.findByNome(nome));
+		return "listaSecretaria";
 	}
 
 	@RequestMapping("login")
@@ -99,6 +116,7 @@ public class SecretariaController {
 		}
 	}
 	
+	@SecretariaAnnotation
 	@RequestMapping("telaInicioSec")
 	public String pagIniciaSecl() {
 		return "telaInicioSecretaria";
