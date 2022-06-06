@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.projetosenha.secretaria.annotation.PortariaAnnotation;
 import com.projetosenha.secretaria.annotation.Publico;
+import com.projetosenha.secretaria.annotation.SecretariaAnnotation;
 import com.projetosenha.secretaria.model.Portaria;
 import com.projetosenha.secretaria.model.Secretaria;
 import com.projetosenha.secretaria.repository.PortariaRepository;
@@ -27,12 +29,13 @@ public class PortariaController {
 
 	@Autowired
 	private PortariaRepository repository;
-
+	
+	@SecretariaAnnotation
 	@RequestMapping("cadPortaria")
 	public String pagPortaria() {
 		return "cadPortaria";
 	}
-
+	@SecretariaAnnotation
 	@RequestMapping(value = "salvarPortaria", method = RequestMethod.POST)
 	public String salvarPortaria(Portaria portaria) {
 		portaria.setAtivo(true);
@@ -41,26 +44,36 @@ public class PortariaController {
 		return "redirect:cadPortaria";
 
 	}
-
+	@SecretariaAnnotation
 	@RequestMapping("listaPort")
 	public String listaVisitantes(Model model) {
 		model.addAttribute("ports", repository.findAll());
 		return "listaPortaria";
 
 	}
-
+	@SecretariaAnnotation
 	@RequestMapping("alterarP")
 	public String alterar(Long id, Model model) {
 		Portaria ports = repository.findById(id).get();
 		model.addAttribute("p", ports);
 		return "forward:cadPortaria";
 	}
-
+	@SecretariaAnnotation
 	@RequestMapping("excluirP")
-	public String excluir(Long id) {
-		repository.deleteById(id);
+	public String excluir(Long id, Model model) {
+		Portaria ports = repository.findById(id).get();
+		ports.setAtivo(false);
+		model.addAttribute("p", ports);
+		repository.save(ports);
 		return "redirect:listaPort";
 	}
+	@SecretariaAnnotation
+	@RequestMapping("buscarPorNomeP")
+	public String buscarPorNomeP(String nome, Model model) {
+		model.addAttribute("ports", repository.findByNome(nome));
+		return "listaPortaria";
+	}
+	
 
 	@RequestMapping("loginP")
 	@Publico
@@ -74,11 +87,6 @@ public class PortariaController {
 			return "telaInicioPortaria";
 		}
 	}
-
-	/*
-	 * else if (port.getAtivo() == false){ attr.addAttribute("mensagemErro",
-	 * "CADASTRO DESATIVADO"); }
-	 */
 	
 	@RequestMapping("loginPort")
 	@Publico
@@ -86,9 +94,15 @@ public class PortariaController {
 		return "loginPort";
 	}
 	
+	@PortariaAnnotation
 	@RequestMapping("telaInicioPortaria")
 	public String telaInicialPortaria() {
 		return "telaInicioPortaria";
 	}
-
+	
+	@RequestMapping("logoutP")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 }

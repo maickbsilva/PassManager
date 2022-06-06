@@ -3,10 +3,16 @@ package com.projetosenha.secretaria.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+
+import com.projetosenha.secretaria.annotation.PortariaAnnotation;
 import com.projetosenha.secretaria.annotation.Publico;
+import com.projetosenha.secretaria.annotation.SecretariaAnnotation;
+import com.projetosenha.secretaria.model.Secretaria;
 
 @Component
 public class AppInterceptor implements HandlerInterceptor {
@@ -21,6 +27,8 @@ public class AppInterceptor implements HandlerInterceptor {
 		// variavel para a sessao
 		HttpSession sessionS = request.getSession();
 		HttpSession sessionP = request.getSession();
+		
+		Secretaria sec = (Secretaria) sessionS.getAttribute("secLogado");
 
 		if (uri.startsWith("/error")) {
 			return true;
@@ -29,16 +37,16 @@ public class AppInterceptor implements HandlerInterceptor {
 		if (handler instanceof HandlerMethod) {
 			// casting de Object para HandlerMethod
 			HandlerMethod metodo = (HandlerMethod) handler;
-
-			// verifica se este metodo é publico
+			
+			if (metodo.getMethodAnnotation(SecretariaAnnotation.class) != null && sessionS.getAttribute("secLogado") != null) {
+				return true;
+			}
+			
+			if (metodo.getMethodAnnotation(PortariaAnnotation.class) != null && sessionP.getAttribute("portLogado") != null) {
+				return true;
+			}
+			
 			if (metodo.getMethodAnnotation(Publico.class) != null) {
-				return true;
-			}
-			// verifica se existe um usuario logado
-			if (sessionS.getAttribute("secLogado") != null) {
-				return true;
-			}
-			if (sessionP.getAttribute("portLogado") != null) {
 				return true;
 			}
 			// redireciona para a pagina inicial

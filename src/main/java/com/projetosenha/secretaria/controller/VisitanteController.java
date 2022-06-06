@@ -11,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.projetosenha.secretaria.annotation.PortariaAnnotation;
+import com.projetosenha.secretaria.annotation.SecretariaAnnotation;
 import com.projetosenha.secretaria.model.Portaria;
 import com.projetosenha.secretaria.model.Visitante;
 import com.projetosenha.secretaria.repository.PortariaRepository;
@@ -21,28 +24,34 @@ public class VisitanteController {
 
 	@Autowired
 	private VisitanteRepository repository;
-	
+
 	@Autowired
 	private PortariaRepository repositoryP;
-	
+
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping("cadVisitante")
 	public String pagVisitante(Model model) {
 		model.addAttribute("ports", repositoryP.findAll());
 		return "cadVisitante";
 	}
-	
+
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping(value = "salvarVisitante", method = RequestMethod.POST)
 	public String salvarVisitante(Visitante visit) {
 		repository.save(visit);
 		System.out.println(visit);
 		return "redirect:cadVisitante";
-		
+
 	}
-	
+
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping("listaVisit/{page}")
 	public String listaPortaria(Model model, @PathVariable("page") int page) {
 
-		PageRequest pageable = PageRequest.of(page - 1, 6, Sort.by(Sort.Direction.ASC, "id"));
+		PageRequest pageable = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "id"));
 
 		Page<Visitante> pagina = repository.findAll(pageable);
 
@@ -64,26 +73,30 @@ public class VisitanteController {
 		return "listaVisitante";
 
 	}
-	
+
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping("alterarV")
 	public String alterar(Long id, Model model) {
 		Visitante visit = repository.findById(id).get();
 		model.addAttribute("v", visit);
 		return "forward:cadVisitante";
 	}
-	
+
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping("excluirV")
 	public String excluir(Long id) {
 		repository.deleteById(id);
 		return "redirect:listaVisit/1";
 	}
-	
+
+	@SecretariaAnnotation
+	@PortariaAnnotation
 	@RequestMapping("buscar")
 	public String buscaPorRG(String rg, Model model) {
 		model.addAttribute("visits", repository.findByRg(rg));
 		return "listaVisitante";
 	}
-	
-	
-	
+
 }

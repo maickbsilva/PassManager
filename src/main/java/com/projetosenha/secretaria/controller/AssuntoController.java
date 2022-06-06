@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.projetosenha.secretaria.annotation.SecretariaAnnotation;
 import com.projetosenha.secretaria.model.Assunto;
 import com.projetosenha.secretaria.model.Curso;
 import com.projetosenha.secretaria.repository.AssuntoRepository;
@@ -18,11 +19,13 @@ public class AssuntoController {
 	@Autowired
 	private AssuntoRepository repository;
 
+	@SecretariaAnnotation
 	@RequestMapping("cadAssunto")
 	public String pagAssunto() {
 		return "cadAssunto";
 	}
 
+	@SecretariaAnnotation
 	@RequestMapping(value = "salvarAssunto", method = RequestMethod.POST)
 	public String salvarAssunto(@Valid Assunto ass) {
 		repository.save(ass);
@@ -30,6 +33,7 @@ public class AssuntoController {
 		return "redirect:cadAssunto";
 	}
 	
+	@SecretariaAnnotation
 	@RequestMapping("listaAssunto")
 	public String listaVisitantes(Model model) {
 		model.addAttribute("assu", repository.findAll());
@@ -37,6 +41,7 @@ public class AssuntoController {
 
 	}
 	
+	@SecretariaAnnotation
 	@RequestMapping("alterarA")
 	public String alterar(Long id, Model model) {
 		Assunto assu = repository.findById(id).get();
@@ -44,6 +49,7 @@ public class AssuntoController {
 		return "forward:cadAssunto";
 	}
 
+	@SecretariaAnnotation
 	@RequestMapping("excluirA")
 	public String excluir(Long id) {
 		repository.deleteById(id);

@@ -21,7 +21,7 @@
 				<td th:text="${ts.visitante.nome}" />
 				<td th:text="${ts.pref}" />
 				<td th:text="${ts.atendimento}" />
-				<td><a th:href="@{/atualizaSenha(id=${ts.id})}">Encerrar
+				<td><a th:href="@{/atualizaAtendimento(id=${ts.id})}">Encerrar
 						Atendimento</a></td>
 			</tr>
 		</tbody>
@@ -63,6 +63,5 @@
 			</tr>
 		</tbody>
 	</table>
-
 </body>
 </html>

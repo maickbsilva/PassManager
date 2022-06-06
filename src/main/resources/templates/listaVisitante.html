@@ -7,9 +7,9 @@
 <body>
 	<h1>Lista Visitante</h1>
 	<p>
-	<a href="javascript:history.back()">VOLTAR</a>
+		<a href="javascript:history.back()">VOLTAR</a>
 	<p>
-	<a href="/cadVisitante">Cadastrar Visitante</a>
+		<a href="/cadVisitante">Cadastrar Visitante</a>
 	<p>
 	<form action="/buscar">
 		Buscar por RG <br> <input type="search" name="rg" />
@@ -47,13 +47,22 @@
 					th:href="@{/excluirV(id=${v.id})}">Excluir </a></td>
 				<td><a th:href="@{/geraAtendimento(id=${v.id})}">Gerar
 						Atendimento</a></td>
-
-
 			</tr>
 
 		</tbody>
 	</table>
+	<ul>
+		<li th:class="${pagAtual == 1 ? 'disable' : 'waves-effect'}"><a
+			th:href="${pagAtual > 1 ? pagAtual -1 : '#'}"><i
+				class="material-icons"> anterior </i></a></li>
 
+		<li th:class="${pagAtual == p ? 'active blue' : 'waves-effect'}"
+			th:each="p:${numPaginas}"><a th:href="${p}"><span
+				th:text="${p}"></span></a></li>
 
+		<li><a
+			th:href="${pagAtual < totalPages ? pagAtual +1 : '#'}"><i
+				class="material-icons"> proxima </i></a></li>
+	</ul>
 </body>
 </html>
