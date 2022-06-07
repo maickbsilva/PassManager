@@ -1,4 +1,59 @@
 <!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadVisitante.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/fonts.css"> 
+    <title>Cadastro Visitante</title>
+</head>
+<body>
+
+    <div class="container">
+        <header class="cabecalho2" >
+            <div class="texto"><h1>Cadastro<h1 id="text-visitante">Visitante</h1></h1></div>
+        </header>
+        <nav class="nav">
+            <ul>
+                <li>Inicio</li>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </ul>
+        </nav>
+        <form method="post" action="salvarVisitante" class="form-cadVisit">
+
+            <input type="hidden" name="id" th:value="${v?.id}"/>
+
+            <label>Nome</label>
+            <input type="text" name="nome" th:value="${v?.nome}"/>
+            <br />
+            <label>RG</label>
+            <input type="text" name="rg" th:value="${v?.rg}"/>
+            <br />
+            <label>Foto</label>
+            <input type="text" name="foto" th:value="${v?.foto}"/>
+            <br />
+            <label>E-mail</label>
+            <input type="email" name="email" th:value="${v?.email}"/>
+            <br />
+            <label>Telefone</label>
+            <input type="text" name="telefone" th:value="${v?.telefone}"/>
+            <br />
+            <label>Nome do porteiro</label>
+            <select name="porteiro.id">
+                <!-- PEGAR O PORTEIRO QUE REALIZOU A SESSAO -->
+				<option th:each="p: ${ports}" th:text="${p.nome}" th:value="${p.id}"></option>
+            </select>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <footer class="rodape">Escola SENAI "Ricardo Lerner"</footer>
+    </div>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
@@ -35,7 +90,7 @@
 
 		<div>
 			<select name="porteiro.id">
-			<!-- PEGAR O PORTEIRO QUE REALIZOU A SESSAO -->
+			PEGAR O PORTEIRO QUE REALIZOU A SESSAO
 				<option th:each="p: ${ports}" th:text="${p.nome}" th:value="${p.id}"></option>
 			</select> <label>Nome do porteiro cadastrante</label>
 		</div>
@@ -46,4 +101,4 @@
 		</div>
 	</form>
 </body>
-</html>
+</html> -->

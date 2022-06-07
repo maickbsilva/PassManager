@@ -2,10 +2,8 @@ package com.projetosenha.secretaria.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.projetosenha.secretaria.annotation.PortariaAnnotation;
 import com.projetosenha.secretaria.annotation.Publico;
 import com.projetosenha.secretaria.annotation.SecretariaAnnotation;
@@ -77,11 +74,13 @@ public class PortariaController {
 
 	@RequestMapping("loginP")
 	@Publico
-	public String login(Portaria portLogin, RedirectAttributes attr, HttpSession session) {
+	public String login(Portaria portLogin, RedirectAttributes attr, HttpSession session, Model model) {
+		
 		Portaria port = repository.findByLoginAndSenhaAndAtivo(portLogin.getLogin(), portLogin.getSenha(), true);
 		if (port == null) {
-			attr.addAttribute("mensagemErro", "Login e/ou senha inválido(s)");
-			return "redirect:/";
+			//attr.addAttribute("mensagemErro", "Login e/ou senha inválido(s)");
+			attr.addFlashAttribute("message", "Login e/ou senha inválido(s)");
+			return "redirect:acessoNegadoP";
 		} else {
 			session.setAttribute("portLogado", port);
 			return "telaInicioPortaria";
@@ -101,8 +100,16 @@ public class PortariaController {
 	}
 	
 	@RequestMapping("logoutP")
-	public String logout(HttpSession session) {
+	public String logoutP(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	@Publico
+	@RequestMapping("acessoNegadoP")
+	public String acessoNegado(Model model) {
+		model.addAttribute("sec", "2");
+		return "acessoNegado";
+	}
+	
 }

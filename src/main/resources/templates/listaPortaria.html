@@ -22,7 +22,7 @@
 			<th>Nome:</th>
 			<th>Matricula</th>
 			<th>Alterar</th>
-			<th>Excluir</th>
+<!-- 			<th>Excluir</th> -->
 		</thead>
 
 		<tbody>
@@ -33,9 +33,9 @@
 				<td th:text="${p.login}" />
 				<td><a th:href="@{/alterarP(id=${p.id})}">Alterar</a></td>
 
-				<td><a
+				<!-- <td><a
 					th:attr="onclick=|return confirm('Deseja desativar: ${p.nome}')|"
-					th:href="@{/excluirP(id=${p.id})}">Desativar</a></td>
+					th:href="@{/excluirP(id=${p.id})}">Desativar</a></td> -->
 
 			</tr>
 

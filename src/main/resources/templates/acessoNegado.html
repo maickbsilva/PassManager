@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>VOCÊ NÃO TEM ACESSO </h1>
+<p id="txt" th:text="${sec}"></p>
 </body>
+<script>
+
+const txt = document.getElementById('txt').textContent;
+alert('Ops! Login e/ou senha invÃ¡lido(s)');
+console.log(txt)
+if(txt == 2){
+	// portaria
+	window.location.href="/loginPort";	
+} else {
+	// secretaria
+	window.location.href="/loginSec";
+}
+
+/*
+setTimeout(() => {
+	window.location.href="./"
+}, 1000);
+*/
+</script>
 </html>

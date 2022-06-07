@@ -1,4 +1,44 @@
 <!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<title>LOGIN | SECRETARIA</title>
+<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/css/footer.css">
+
+</head>
+<body>
+	<div class="container">
+		<header class="cabecalho">
+			<div class="texto">
+				<h1>
+					Login
+					<h1 id="text-portaria">Secretaria</h1>
+				</h1>
+			</div>
+		</header>
+
+		<div class="TranspCad">
+			<form class="formCad" method="post" action="login">
+
+				<input type="hidden" name="id" th:value="${c?.id}" /> <label
+					class="labelPort">Matricula</label> <input class="inptLogin"
+					type="text" name="matricula" /> <br> <br> <label
+					class="labelPort">Senha </label> <input class="inptLogin"
+					type="password" name="senha">
+				<button class="btnLogin" type="submit">Login</button>
+			</form>
+		</div>
+	</div>
+
+	<footer class="rodape"></footer>
+
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -23,4 +63,4 @@
 	</form>
 
 </body>
-</html>
+</html> -->
