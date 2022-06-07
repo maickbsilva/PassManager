@@ -28,8 +28,6 @@ public class AppInterceptor implements HandlerInterceptor {
 		HttpSession sessionS = request.getSession();
 		HttpSession sessionP = request.getSession();
 		
-		Secretaria sec = (Secretaria) sessionS.getAttribute("secLogado");
-
 		if (uri.startsWith("/error")) {
 			return true;
 		}

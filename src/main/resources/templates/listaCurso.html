@@ -23,7 +23,7 @@
 			<th>Matricula Inicio</th>
 			<th>Matricula Expiracao</th>
 			<th>Alterar</th>
-			<th>Excluir</th>
+<!-- 			<th>Excluir</th> -->
 		</thead>
 
 		<tbody>
@@ -34,9 +34,9 @@
 				<td th:text="${c.matriculaInicio}" /> <!-- colocar um format -->
 				<td th:text="${c.matriculaExpiracao}" />
 				<td><a th:href="@{/alterarC(id=${c.id})}">Alterar</a></td>
-				<td><a
+<!-- 				<td><a
 					th:attr="onclick=|return confirm('Deseja excluir: ${c.nome}')|"
-					th:href="@{/excluirC(id=${c.id})}">Excluir </a></td>
+					th:href="@{/excluirC(id=${c.id})}">Excluir </a></td> -->
 
 			</tr>
 

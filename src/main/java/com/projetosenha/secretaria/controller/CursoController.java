@@ -109,12 +109,5 @@ public class CursoController {
 	public String buscaPorTpCurso(Long tpCurso, Model model){
 		model.addAttribute("cursos", repository.buscaPorTpCurso(tpCurso));
 		return "listaCurso";
-	}
-	
-	@RequestMapping("logoutS")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/";
-	}
-	
+	}	
 }

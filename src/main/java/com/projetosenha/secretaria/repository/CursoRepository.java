@@ -16,5 +16,6 @@ public interface CursoRepository extends PagingAndSortingRepository<Curso, Long>
 	@Query("SELECT c FROM Curso c ORDER BY c.tpCurso.tpCurso ASC")
 	public List<Curso> buscaPorTpCurso(Long tpCurso);
 	
-	public List<Curso> findByNome(String nome);
+	@Query("SELECT c FROM Curso c WHERE c.nome LIKE %:p%")
+	public List<Curso> findByNome(@Param("p") String nome);
 }

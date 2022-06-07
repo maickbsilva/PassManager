@@ -8,11 +8,7 @@ import com.projetosenha.secretaria.model.Visitante;
 
 public interface VisitanteRepository extends PagingAndSortingRepository<Visitante, Long>{
 
-	//@Query("SELECT v FROM Visitante v WHERE v.rg LIKE %:p%")
-	//public List<Visitante> findByRg(@Param("p") String rg);
-	
-	public List<Visitante> findByRg(String rg);
-
-	//public Visitante findByRg(String rg);
+	@Query("SELECT v FROM Visitante v WHERE v.rg LIKE %:p%")
+	public List<Visitante> findByRg(@Param("p") String rg);
 	
 }

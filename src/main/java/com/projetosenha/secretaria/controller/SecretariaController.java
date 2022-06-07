@@ -108,8 +108,8 @@ public class SecretariaController {
 		Secretaria sec = repository.findByMatriculaAndSenhaAndAtivo(secLogin.getMatricula(), secLogin.getSenha(), true);
 
 		if (sec == null) {
-			attr.addAttribute("mensagemErro", "Login e/ou senha inválido(s)");
-			return "redirect:/";
+			attr.addFlashAttribute("message", "Login e/ou senha inválido(s)");
+			return "redirect:acessoNegado";
 		} else {
 			session.setAttribute("secLogado", sec);
 			return "redirect:/telaInicioSec";
@@ -126,6 +126,19 @@ public class SecretariaController {
 	@Publico
 	public String loginSec() {
 		return "loginSec";
+	}
+	
+	@RequestMapping("acessoNegado")
+	@Publico
+	public String acessoNegado(Model model) {
+		model.addAttribute("sec", "1");
+		return "acessoNegado";
+	}
+	
+	@RequestMapping("logoutS")
+	public String logoutS(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 
 }

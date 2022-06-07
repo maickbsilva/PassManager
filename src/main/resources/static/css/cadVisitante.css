@@ -1,0 +1,14 @@
+#text-visitante{
+    text-indent: 4.5em;
+    line-height: 25px;
+    letter-spacing: -2px;
+}
+.cabecalho2{
+    color: #AA4D57;
+    font-weight: 400;
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    font: 900;
+    width: 30%;
+    text-transform: uppercase;
+}

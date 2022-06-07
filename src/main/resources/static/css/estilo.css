@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.iniporPrinc{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+.cabecalho{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.cabecalho > img {
+width: 17%;
+}
+.btn-sair{
+
+    background-color: #427AAA;
+    width: 200px;
+    height: 100px;
+    padding: 20px 50px 20px 50px;
+    position: absolute;
+    top:0;
+    right: 0;
+    border: none;
+    border-end-start-radius: 80px;
+}
+.link-Sair{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2.5em;
+    margin-left: 25px;
+}
+.cd-cc{
+    height: 50%;
+    margin:10% 20% ;
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+}
+
+.btn-curDisp, .btn-consCad{
+margin-top:7.8% ;
+padding: 10px;
+width:400px;
+height: 200px;
+background-color: rgba(209, 29, 29, 0.10);
+border: none;
+}
+.btn-curDisp{
+    border-top-left-radius: 100px; 
+}
+.btn-consCad{
+    border-bottom-right-radius: 100px;
+}
+.link-curDisp, .link-consCad{
+    font-family: 'Imprima', sans-serif;
+    text-decoration: none;
+    color:#135790;
+    font-size: 3em;
+    line-height: 65px;
+    font-weight:600;
+
+}
+footer{
+    padding: 20px;
+    background-color:#AA4D57;
+    color: #ffffff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width:100%;
+    font-size: 1.5em;
+}
+
+
+.btn-Menu{
+
+    background-color: #427AAA;
+    width: 800px;
+    height: 100px;
+    padding: 20px 50px 20px 50px;
+    position: absolute;
+    top:0;
+    right: 0;
+    border: none;
+    border-end-start-radius: 80px;
+
+}
+.link-Menu{
+    
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2.5em;
+    
+}
