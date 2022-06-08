@@ -1,0 +1,182 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+	overflow:hidden;
+	font-family:sans-serif;
+}
+/* tela de dados de atendimento a secretaria */
+.container-principal{
+	width:100%;
+	height:100vh;
+}
+.cabecalho{
+	padding:25px 0 15px 70px;
+}
+.detalhe-cima{
+	background-color:#AA4D57;
+	border-bottom-left-radius:10px;
+	position:absolute;
+	top:0;
+	right:0;
+	width:65%;
+	height:50px;
+}
+.container{
+	display:flex;
+}
+.tb-atendimento{
+	border-top-right-radius:75px;
+	border-bottom-right-radius:12px;
+	background-color:rgba(80, 140, 180, 0.80);
+	width:66%;
+	height:50vh;
+}
+.table1{
+	width:100%;
+	
+	
+}
+.thead1{
+	color:#F7B8B8;
+	font-size:1.8em;
+	margin:20px;
+	text-align: center;
+}
+.h1, .h2{
+	margin-top:15px;
+}
+.h1{
+	text-transform:uppercase;
+	font-size:2em;
+	text-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+}
+.h2{
+	text-transform:capitalize;
+	color:white;
+	font-size:1.7em;
+}
+
+/* table ultimas senhas */
+
+.container-ult-senhas{
+	width:66%;
+	border-top-right-radius:12px;
+	position:absolute;
+	bottom:4%;
+	left:0;
+	background-color:rgba(80, 140, 180, 0.80);
+	height:26vh;
+	text-align:center;
+	color:white;
+	padding:15px;
+	overflow-y:hidden;
+}	
+.ult-senhas-h2{
+	color:#F7B8B8;
+	font-size:2.4em;
+	font-family:sans-serif;
+}
+.sect-ult-senhas{
+	display:block;
+	line-height: 40px;
+}
+
+
+
+/* table senhas */
+.tb-senhas{
+	width:30%;
+	height:55vh;
+	text-align: center;
+	overflow-y:auto;
+	position:absolute;
+	bottom:70px;
+	right:40px;
+	
+}
+.tb-senhas::-webkit-scrollbar {
+  width: 8px;
+}
+.tb-senhas::-webkit-scrollbar-thumb {
+  background-color: #427AAA;
+  border-radius: 8px;
+}
+.table2{
+	width:100%;
+	text-align:center;	
+}
+.thead2{
+	font-size:1.5em;
+	color:#F7B8B8;
+}
+
+.h1-tb-senha{
+	font-family:'Inter', sans-serif;
+	color:#568CB4;
+	font-size:2em;
+	-webkit-text-stroke: 3px #568CB4;
+	margin-bottom:20px;
+}
+.tbody2{
+	font-size:1.2em;
+	text-transform:capitalize;
+	line-height: 40px;
+}
+
+
+
+/* btns proximo/Repete */
+.btn-EncAtd{
+	position:absolute;
+	top:17%;
+	right:11%;
+	padding:20px;
+	border:none;
+	background-color:#F7B8B8;
+	border-radius:4px;
+	width:225px;
+}
+.btn-EncAtd > a{
+	
+	font-size:1.7em;
+	font-weight:1000;
+	color:white;
+	text-decoration:none;
+	font-family: 'Inconsolata', monospace;
+	text-transform: uppercase;
+}
+.btn-RepAtd{
+	position:absolute;
+	top:28%;
+	right:11%;
+	padding:20px;
+	border:none;
+	background-color:#AA4D57;
+	border-radius:4px;
+	width:225px;
+}
+.btn-RepAtd > a{
+	font-size:1.7em;
+	font-weight:1000;
+	color:white;
+	text-decoration:none;
+	font-family: 'Inconsolata', monospace;
+	text-transform: uppercase;
+}
+
+.detalhe-baixo{
+	background-color:#AA4D57;
+	border-top-right-radius:10px;
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:89%;
+	padding:20px;
+	text-align: center;
+	color:white;
+	font-size:1.8em;
+}
+.sen-ant{
+	color:#427AAA;
+}

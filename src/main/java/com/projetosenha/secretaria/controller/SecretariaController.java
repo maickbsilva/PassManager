@@ -135,8 +135,10 @@ public class SecretariaController {
 		return "acessoNegado";
 	}
 	
+	@Publico
 	@RequestMapping("logoutS")
 	public String logoutS(HttpSession session) {
+		System.out.println("PASSOU LOGOUT SECRETARIA");
 		session.invalidate();
 		return "redirect:/";
 	}

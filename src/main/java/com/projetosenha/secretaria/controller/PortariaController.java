@@ -99,8 +99,10 @@ public class PortariaController {
 		return "telaInicioPortaria";
 	}
 	
+	@Publico
 	@RequestMapping("logoutP")
 	public String logoutP(HttpSession session) {
+		System.out.println("PASSOU LOGOUT PORTARIA");
 		session.invalidate();
 		return "redirect:/";
 	}
