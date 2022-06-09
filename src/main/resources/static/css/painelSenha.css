@@ -71,6 +71,7 @@
 	color:white;
 	padding:15px;
 	overflow-y:hidden;
+	overflow-x: scroll;
 }	
 .ult-senhas-h2{
 	color:#F7B8B8;
@@ -105,6 +106,7 @@
 .table2{
 	width:100%;
 	text-align:center;	
+	
 }
 .thead2{
 	font-size:1.5em;
@@ -179,4 +181,8 @@
 }
 .sen-ant{
 	color:#427AAA;
+}
+.ul-ultimos{
+	display:inline-block;
+	font-size: 25px;
 }

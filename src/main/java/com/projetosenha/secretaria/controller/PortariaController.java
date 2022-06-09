@@ -79,8 +79,8 @@ public class PortariaController {
 		Portaria port = repository.findByLoginAndSenhaAndAtivo(portLogin.getLogin(), portLogin.getSenha(), true);
 		if (port == null) {
 			//attr.addAttribute("mensagemErro", "Login e/ou senha inválido(s)");
-			attr.addFlashAttribute("message", "Login e/ou senha inválido(s)");
-			return "redirect:acessoNegadoP";
+			attr.addFlashAttribute("mensagemErro", "Login e/ou senha inválido(s)");
+			return "redirect:loginPort";
 		} else {
 			session.setAttribute("portLogado", port);
 			return "telaInicioPortaria";

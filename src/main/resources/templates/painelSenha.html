@@ -32,19 +32,19 @@
 							<h2 class="h2" th:text="${ts.pref == true ? 'Sim' : 'Não'}"></h2>
 							<h1 class="h1">Assunto</h1>
 							<h2 class="h2" th:text="${ts.assunto.descAssunto}"></h2>
-							
+
 							<!-- <input type="hidden" value="{/atualizaSenha(id=${ts.id})}" name="p"> -->
-							
-							
+
+
 							<button class="btn-EncAtd">
-								<a onmouseenter='startSound()' th:href="@{/atualizaSenha(id=${ts.id})}">Proximo</a>
+								<a onmouseenter='startSound()'
+									th:href="@{/atualizaSenha(id=${ts.id})}">Proximo</a>
 							</button>
-							
-							<button class="btn-RepAtd"
-								onclick='startSound()'>
+
+							<button class="btn-RepAtd" onclick='startSound()'>
 								<a href="#">Repete</a>
 							</button>
-							
+
 						</div>
 						<div></div>
 					</div>
@@ -54,39 +54,46 @@
 			<!-- fazer isso virar uma lista na horizontal -->
 			<div class="container-ult-senhas">
 				<section class="sect-ult-senhas">
+
 					<h2 class="ult-senhas-h2">Ultimas senhas</h2>
-					<div th:each="ts:${ultimos}">
-						<p th:text="${ts.visitante.nome}" />
-						<p th:text="${ts.horaFimAtendimento}" />
-					</div>
+
+					<ul class="ul-ultimos" th:each="ts:${ultimos}">
+						<li th:text="${ts.visitante.nome}" />
+						<li th:text="${ts.horaFimAtendimento}" />
+					</ul>
 				</section>
 			</div>
 
-			<div class="tb-senhas">
-				<table class="table2">
-					<h1 class="h1-tb-senha">PROXIMAS SENHAS</h1>
-					<thead class="thead2">
-						<th class="th">Nome</th>
-						<th class="th">PREF</th>
-						<th class="th">Assunto</th>
-					</thead>
-					<tbody class="tbody2">
-						<tr th:each="ts:${telasenha}">
-							<td th:text="${ts.visitante.nome}" />
-							<!-- if pref = true print sim : nao -->
-							<td th:text="${ts.pref == true ? 'Sim' : 'Não'}" />
-							<td th:text="${ts.assunto.descAssunto}" />
-						</tr>
-					</tbody>
-				</table>
-			</div>
+
+
 		</div>
 
-		<div class="detalhe-baixo"></div>
+		<div class="tb-senhas">
+			<table class="table2">
+
+				<h1 class="h1-tb-senha">PROXIMAS SENHAS</h1>
+				<thead class="thead2">
+					<th class="th">Nome</th>
+					<th class="th">PREF</th>
+					<th class="th">Assunto</th>
+				</thead>
+
+				<tbody class="tbody2">
+					<tr th:each="ts:${telasenha}">
+						<td th:text="${ts.visitante.nome}" />
+						<!-- if pref = true print sim : nao -->
+						<td th:text="${ts.pref == true ? 'Sim' : 'Não'}" />
+						<td th:text="${ts.assunto.descAssunto}" />
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	
+
+	<div class="detalhe-baixo"></div>
+
 	<script>
-		function startSound () {
+		function startSound() {
 			const music = new Audio('/audio/Rua-Direita-1.mp3');
 			music.play();
 		}

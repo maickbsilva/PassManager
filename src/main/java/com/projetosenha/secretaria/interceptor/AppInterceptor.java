@@ -49,7 +49,7 @@ public class AppInterceptor implements HandlerInterceptor {
 			}
 			
 			// redireciona para a pagina inicial
-			response.sendRedirect("/");
+			response.sendRedirect("/acessoNegado");
 			return false;
 
 		}
