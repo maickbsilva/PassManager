@@ -22,12 +22,22 @@
 		<div class="TranspCad">
 			<form class="formCad" method="post" action="login">
 
-				<input type="hidden" name="id" th:value="${c?.id}" /> <label
-					class="labelPort">Matricula</label> <input class="inptLogin"
-					type="text" name="matricula" /> <br> <br> <label
-					class="labelPort">Senha </label> <input class="inptLogin"
-					type="password" name="senha">
-				<button class="btnLogin" type="submit">Login</button>
+				<input type="hidden" name="id" th:value="${c?.id}" />
+				
+				 	<label	class="labelPort">Matricula</label> 
+				
+				 <input class="inptLogin" type="text" name="matricula" />
+				  <br> <br> 
+				
+				 <label class="labelPort">Senha </label>				  
+				  
+				  <input class="inptLogin" type="password" name="senha">
+				  
+				  <div th:replace="fragments/mensagem"></div>
+
+					<button class="btnLogin" type="submit">Login</button>
+					
+					
 			</form>
 		</div>
 	</div>

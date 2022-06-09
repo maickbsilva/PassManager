@@ -1,8 +1,84 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/telaSenha.css">
+<title>Document</title>
+</head>
+<body>
+	<div class="container-principal">
+		<header>
+			<img class="logo"
+				src="https://www.novaconcursos.com.br/portal/wp-content/uploads/2015/10/senai-logo.jpg" />
+			<h1 class="h1-header">Escola Senai “Ricardo Lerner”</h1>
+			<span id="exibeHora"></span>
+		</header>
+
+		<div class="grid-container">
+			<div class="grid-item" id="senha">
+				senha
+
+				<h3 class="h3-senha" th:each="ts:${primeiro}">
+					<h6 th:text="${ts.visitante.nome}"/>
+				</h3>
+				
+				<!-- <div th:each="ts:${primeiro}">
+							<h1 class="h1">Nome</h1>
+							<h2 class="h2" th:text="${ts.visitante.nome}"></h2> -->
+				
+			</div>
+			<div class="grid-item">
+				<img src="/image/img1-carrousel.png" />
+			</div>
+		</div>
+		<section class="ult-chamds">
+			<h1 class="h1-ult-chamds">Ultimas chamadas</h1>
+
+			<ul class="ul-ult-chamds" th:each="ts:${ultimos}">
+				<li th:text="${ts.visitante.nome}"/>
+			</ul>
+		</section>
+	</div>
+</body>
+<script>
+	function relogio() {
+		var data = new Date();
+		var hor = data.getHours();
+		var min = data.getMinutes();
+		var seg = data.getSeconds();
+
+		if (hor < 10) {
+			hor = "0" + hor;
+		}
+		if (min < 10) {
+			min = "0" + min;
+		}
+		if (seg < 10) {
+			seg = "0" + seg;
+		}
+
+		var horas = hor + ":" + min + ":" + seg;
+
+		console.log('passou aqui')
+		// document.getElementById("rel").value = horas;
+		document.getElementById('exibeHora').textContent = horas;
+	}
+
+	relogio()
+
+	var timer = setInterval(relogio, 1000);
+</script>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<!-- <meta http-equiv="refresh" content="5"> fica atualizando a pag de 5 em 5s -->
+<meta http-equiv="refresh" content="5"> fica atualizando a pag de 5 em 5s
 <title>Insert title here</title>
 </head>
 <body>
@@ -64,4 +140,4 @@
 		</tbody>
 	</table>
 </body>
-</html>
+</html> -->

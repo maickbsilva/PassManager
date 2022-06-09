@@ -1,8 +1,113 @@
 <!DOCTYPE html>
 <html xmlns:th="http://tymeleaf.org">
 <head>
+<meta charset="utf-8">
+<title>Painel Senha Interno Secretaria</title>
+<link rel="stylesheet" type="text/css" href="/css/painelSenha.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container-principal">
+		<header class="cabecalho">
+			<img src="image/senai-logo5.png" />
+			<div class="detalhe-cima"></div>
+		</header>
+
+		<div class="container">
+			<!-- container exibição de dados a secretaria -->
+			<div class="tb-atendimento">
+				<div class="table1">
+					<div class="thead1">
+						<div th:each="ts:${primeiro}">
+							<h1 class="h1">Nome</h1>
+							<h2 class="h2" th:text="${ts.visitante.nome}"></h2>
+							<h1 class="h1">Preferencial</h1>
+							<h2 class="h2" th:text="${ts.pref == true ? 'Sim' : 'Não'}"></h2>
+							<h1 class="h1">Assunto</h1>
+							<h2 class="h2" th:text="${ts.assunto.descAssunto}"></h2>
+
+							<!-- <input type="hidden" value="{/atualizaSenha(id=${ts.id})}" name="p"> -->
+
+
+							<button class="btn-EncAtd">
+								<a onmouseenter='startSound()'
+									th:href="@{/atualizaSenha(id=${ts.id})}">Proximo</a>
+							</button>
+
+							<button class="btn-RepAtd" onclick='startSound()'>
+								<a href="#">Repete</a>
+							</button>
+
+						</div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- fazer isso virar uma lista na horizontal -->
+			<div class="container-ult-senhas">
+				<section class="sect-ult-senhas">
+
+					<h2 class="ult-senhas-h2">Ultimas senhas</h2>
+
+					<ul class="ul-ultimos" th:each="ts:${ultimos}">
+						<li th:text="${ts.visitante.nome}" />
+						<li th:text="${ts.horaFimAtendimento}" />
+					</ul>
+				</section>
+			</div>
+
+
+
+		</div>
+
+		<div class="tb-senhas">
+			<table class="table2">
+
+				<h1 class="h1-tb-senha">PROXIMAS SENHAS</h1>
+				<thead class="thead2">
+					<th class="th">Nome</th>
+					<th class="th">PREF</th>
+					<th class="th">Assunto</th>
+				</thead>
+
+				<tbody class="tbody2">
+					<tr th:each="ts:${telasenha}">
+						<td th:text="${ts.visitante.nome}" />
+						<!-- if pref = true print sim : nao -->
+						<td th:text="${ts.pref == true ? 'Sim' : 'Não'}" />
+						<td th:text="${ts.assunto.descAssunto}" />
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="detalhe-baixo"></div>
+
+	<script>
+		function startSound() {
+			const music = new Audio('/audio/Rua-Direita-1.mp3');
+			music.play();
+		}
+	</script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://tymeleaf.org">
+<head>
 <meta charset="ISO-8859-1">
-<!-- <meta http-equiv="refresh" content="5"> fica atualizando a pag de 5 em 5s -->
+<meta http-equiv="refresh" content="5"> fica atualizando a pag de 5 em 5s
 <title>Insert title here</title>
 </head>
 <body>
@@ -65,4 +170,4 @@
 	</table>
 
 </body>
-</html>
+</html> -->

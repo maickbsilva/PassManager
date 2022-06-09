@@ -47,8 +47,9 @@ public class AppInterceptor implements HandlerInterceptor {
 			if (metodo.getMethodAnnotation(Publico.class) != null) {
 				return true;
 			}
+			
 			// redireciona para a pagina inicial
-			response.sendRedirect("/");
+			response.sendRedirect("/acessoNegado");
 			return false;
 
 		}
