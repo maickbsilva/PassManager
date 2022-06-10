@@ -24,7 +24,7 @@ public class Secretaria {
 	private Long id;
 	@Column(nullable = false)
 	private String nome;
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	@NotEmpty
 	private String senha;
 

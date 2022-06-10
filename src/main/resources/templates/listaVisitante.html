@@ -1,4 +1,82 @@
 <!DOCTYPE html>
+<html style="font-family: Calibri">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Visitantes</title>
+<link rel="stylesheet" type="text/css" href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>  
+	<nav>
+		<div class="nav-wrapper col s6">	
+			<a href="/logoutS"><i class="material-icons right" style="font-size: 45px">exit_to_app</i></a>		
+			<img class="brand-logo center" src="/image/senai-logo-nav.png">
+			<ul class="left hide-on-med-and-down">
+				<li><a href="javascript:history.back()"><i
+						class="material-icons">arrow_back</i></a></li>
+				<li><a href="/telaInicioSec">Inicio</a></li>
+				<li><a href="/painelSenha">Painel Atendimento</a></li>
+			</ul>
+		</div>
+	</nav>	
+	<h2 style="text-align: center">Lista de Visitantes</h2>
+	
+  <div class="row" style="margin-bottom: 0px">
+    <form class="col s12" action="/buscar">
+      <div class="row">
+      
+        <div class="input-field col s7">
+          <i class=" prefix material-icons ">search</i>
+          <input id="icon_prefix" type="text" name="rg" class="validate">
+          <label for="icon_prefix">Buscar por RG</label>
+        </div>
+        
+        <div class="input-field col s5">
+          <a class="waves-effect waves-light btn" style="background-color: #DCDCDC" href="/cadVisitante">Criar Novo</a>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+	
+	<p>
+	<table class="striped" style="width: 90%; margin: 0px auto 0px auto">
+		<thead>
+			<th>Nome</th>
+			<th>RG</th>
+			<th>Telefone</th>
+			<th>E-mail</th>
+			<th>Cadastrante</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			
+		</thead>
+
+		<tbody>
+			<tr th:each="v:${visits}">
+				<td th:text="${v.nome}" />
+				<td th:text="${v.rg}" />
+				<td th:text="${v.telefone}" />				
+				<td th:text="${v.email}" />
+				<td th:text="${v.porteiro?.nome}" />
+				<td><a th:href="@{/alterarV(id=${v.id})}"><i class="material-icons">edit</i></a></td>
+				<td><a
+					th:attr="onclick=|return confirm('Deseja excluir: ${v.nome}')|"
+					th:href="@{/excluirV(id=${v.id})}"><i class="material-icons" style="color:red">delete_forever</i></a></td>
+				<td><a th:href="@{/geraAtendimento(id=${v.id})}" style="color:#83F362"><i class="material-icons">person_add</i></a></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<script src="/materialize/js/materialize.min.js"></script>
+	
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
@@ -41,9 +119,9 @@
 				<td th:text="${v.telefone}" />
 				<td th:text="${v.porteiro?.nome}" />
 				<td><a th:href="@{/alterarV(id=${v.id})}">Alterar</a></td>
-				<!-- <td><a
+				<td><a
 					th:attr="onclick=|return confirm('Deseja excluir: ${v.nome}')|"
-					th:href="@{/excluirV(id=${v.id})}">Excluir </a></td> -->
+					th:href="@{/excluirV(id=${v.id})}">Excluir </a></td>
 				<td><a th:href="@{/geraAtendimento(id=${v.id})}">Gerar
 						Atendimento</a></td>
 			</tr>
@@ -64,4 +142,4 @@
 				class="material-icons"> proxima </i></a></li>
 	</ul>
 </body>
-</html>
+</html> -->

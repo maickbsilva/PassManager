@@ -1,104 +1,76 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html style="font-family: Calibri" xmlns:th="http://tymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/cadVisitante.css">
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/fonts.css"> 
-    <title>Cadastro Visitante</title>
+<meta charset="UTF-8">
+<title>Cadastro de Visitante</title>
+<link rel="stylesheet" type="text/css"
+	href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 </head>
-<body>
+	<body>
+		<nav>
+			<div class="nav-wrapper col s6">
+				<a href="/logoutS"><i class="material-icons right"
+					style="font-size: 45px">exit_to_app</i></a> <img
+					class="brand-logo center" src="/image/senai-logo-nav.png">
+				<ul class="left hide-on-med-and-down">
+					<li><a href="javascript:history.back()"> <i
+							class="material-icons">arrow_back</i></a></li>
+					<li><a href="/telaInicioSec">Inicio</a></li>
+					<li><a href="/painelSenha">Painel Atendimento</a></li>
+				</ul>
+			</div>
+		</nav>
+		<h2 style="text-align: center;">Cadastro de Visitante</h2>
+	
+		<form class="col s12" method="post"
+			style="width: 40%; margin: 0px auto 0px auto" action="salvarVisitante">
+			<input type="hidden" name="id" th:value="${v?.id}"/>
+			<div class="row">
+				<div class="input-field col s12">
+					<input placeholder="Nome" type="text" name="nome" th:value="${v?.nome}">
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="input-field col s6">
+					<input type="text" name="rg" th:value="${v?.rg}" placeholder="RG">
+				</div>
+				
+				<div class="input-field col s6">
+					<select name="porteiro.id">
+						<option value="" disabled selected>Escolha uma opção</option>
+						<option th:each="p: ${ports}" th:text="${p.nome}" th:value="${p.id}"></option>
+					</select> <label>Cadastrante</label>
+				</div>
+			</div>
 
-    <div class="container">
-        <header class="cabecalho2" >
-            <div class="texto"><h1>Cadastro<h1 id="text-visitante">Visitante</h1></h1></div>
-        </header>
-        <nav class="nav">
-            <ul>
-                <li>Inicio</li>
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            </ul>
-        </nav>
-        <form method="post" action="salvarVisitante" class="form-cadVisit">
-
-            <input type="hidden" name="id" th:value="${v?.id}"/>
-
-            <label>Nome</label>
-            <input type="text" name="nome" th:value="${v?.nome}"/>
-            <br />
-            <label>RG</label>
-            <input type="text" name="rg" th:value="${v?.rg}"/>
-            <br />
-            <label>Foto</label>
-            <input type="text" name="foto" th:value="${v?.foto}"/>
-            <br />
-            <label>E-mail</label>
-            <input type="email" name="email" th:value="${v?.email}"/>
-            <br />
-            <label>Telefone</label>
-            <input type="text" name="telefone" th:value="${v?.telefone}"/>
-            <br />
-            <label>Nome do porteiro</label>
-            <select name="porteiro.id">
-                <!-- PEGAR O PORTEIRO QUE REALIZOU A SESSAO -->
-				<option th:each="p: ${ports}" th:text="${p.nome}" th:value="${p.id}"></option>
-            </select>
-            <button type="submit">Cadastrar</button>
-        </form>
-        <footer class="rodape">Escola SENAI "Ricardo Lerner"</footer>
-    </div>
-</body>
+			<div class="row">
+				<div class="input-field col s12">
+					<input type="text" name="email" th:value="${v?.email}" placeholder="E-mail">
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="input-field col s12">
+					<input placeholder="Telefone" type="text" name="telefone" th:value="${v?.telefone}">
+				</div>
+			</div>
+				
+			<div class="row">			
+				<div class="input-field col s4">
+					<input class="waves-effect waves-light btn"
+						style="background-color: #DCDCDC" type="submit">
+				</div>	
+			</div>
+		</form>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="/materialize/js/materialize.min.js"></script>
+	</body>
+	<script>
+	  $(document).ready(function(){
+		    $('select').formSelect();
+		  });
+	</script>
 </html>
-
-<!-- <!DOCTYPE html>
-<html xmlns:th="http://tymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Cadastro de Visitante</h1>
-
-	<form method="post" action="salvarVisitante">
-
-		<input type="hidden" name="id" th:value="${v?.id}"/>
-
-		<div>
-			nome <input type="text" name="nome" th:value="${v?.nome}">
-		</div>
-		<br>
-		<div>
-			rg <input type="text" name="rg" th:value="${v?.rg}">
-		</div>
-		<br>
-		<div>
-			foto <input type="text" name="foto" th:value="${v?.foto}">
-		</div>
-		<br>
-
-		<div>
-			email <input type="email" name="email" th:value="${v?.email}">
-		</div>
-		<br>
-		<div>
-			telefone <input type="text" name="telefone" th:value="${v?.telefone}">
-		</div>
-		<br>
-
-		<div>
-			<select name="porteiro.id">
-			PEGAR O PORTEIRO QUE REALIZOU A SESSAO
-				<option th:each="p: ${ports}" th:text="${p.nome}" th:value="${p.id}"></option>
-			</select> <label>Nome do porteiro cadastrante</label>
-		</div>
-		<br>
-
-		<div>
-			<button type="submit">Cadastrar</button>
-		</div>
-	</form>
-</body>
-</html> -->

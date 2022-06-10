@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>Painel Senha Interno Secretaria</title>
+<link rel="stylesheet" type="text/css"
+	href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/css/painelSenha.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,11 +19,17 @@
 </head>
 <body>
 	<div class="container-principal">
-		<header class="cabecalho">
-			<img src="image/senai-logo5.png" />
-			<div class="detalhe-cima"></div>
-		</header>
-
+		<nav>
+			<div class="nav-wrapper col s6">
+				<img class="brand-logo center" src="/image/senai-logo-nav.png">
+				<ul class="left hide-on-med-and-down">
+					<li><a href="javascript:history.back()"><i
+							class="material-icons">arrow_back</i></a></li>
+					<li><a href="/telaInicioSec">Inicio</a></li>
+					<li><a href="/painelAtendimento/1">Painel Atendimento</a></li>
+				</ul>
+			</div>
+		</nav>
 		<div class="container">
 			<!-- container exibição de dados a secretaria -->
 			<div class="tb-atendimento">
@@ -100,9 +110,7 @@
 	</script>
 </body>
 </html>
-
-
-
+<!-- PRIMEIRO -->
 <!-- <!DOCTYPE html>
 <html xmlns:th="http://tymeleaf.org">
 <head>

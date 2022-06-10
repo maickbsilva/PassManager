@@ -1,4 +1,62 @@
 <!DOCTYPE html>
+<html style="font-family: Calibri">
+<head>
+<meta charset="UTF-8">
+<title>Lista Tipo de Cursos</title>
+<link rel="stylesheet" type="text/css"
+	href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper col s6">
+			<a href="/logoutS"><i class="material-icons right"
+				style="font-size: 45px">exit_to_app</i></a> <img
+				class="brand-logo center" src="/image/senai-logo-nav.png">
+			<ul class="left hide-on-med-and-down">
+				<li><a href="javascript:history.back()"><i
+						class="material-icons">arrow_back</i></a></li>
+				<li><a href="/telaInicioSec">Inicio</a></li>
+				<li><a href="/painelSenha">Painel Atendimento</a></li>
+			</ul>
+		</div>
+	</nav>
+	<h2 style="text-align: center">Lista Tipo de Cursos</h2>
+
+	<div class="row" style="margin-bottom: 0px">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s12">
+					<a class="waves-effect waves-light btn"
+						style="background-color: #DCDCDC" href="/listaPc">Criar Novo</a>
+				</div>
+
+			</div>
+		</form>
+	</div>
+	<table class="striped" style="width: 50%; height:50%; margin: 0px auto 100px auto">
+		<thead>
+			<th>Tipo</th>
+			<th></th>
+			<th></th>
+		</thead>
+
+		<tbody>
+			<tr th:each="tc:${tipos}">
+				<td th:text="${tc.tpCurso}" />
+				<td><a th:href="@{/alterarTC(id=${tc.id})}"><i class="material-icons">edit</i></a></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<script src="/materialize/js/materialize.min.js"></script>
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
@@ -12,7 +70,7 @@
 			<th>Id</th>
 			<th>Tipos</th>
 			<th>Alterar</th>
-<!-- 			<th>Excluir</th> -->
+			<th>Excluir</th>
 		</thead>
 
 		<tbody>
@@ -23,7 +81,7 @@
 				
 				<td><a th:href="@{/alterarTC(id=${tc.id})}">Alterar</a></td>
 
-				<!-- <td><a th:href="@{/excluirTC(id=${tc.id})}">Excluir </a></td> -->
+				<td><a th:href="@{/excluirTC(id=${tc.id})}">Excluir </a></td>
 
 			</tr>
 
@@ -32,4 +90,4 @@
 
 
 </body>
-</html>
+</html> -->

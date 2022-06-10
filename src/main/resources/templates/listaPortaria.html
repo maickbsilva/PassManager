@@ -1,47 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html style="font-family: Calibri">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Lista de Cursos</title>
+<link rel="stylesheet" type="text/css" href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
-<body>
-	<h1>Lista Portaria</h1>
+<body>  
+	<nav>
+		<div class="nav-wrapper col s6">	
+			<a href="/logoutS"><i class="material-icons right" style="font-size: 45px">exit_to_app</i></a>		
+			<img class="brand-logo center" src="/image/senai-logo-nav.png">
+			<ul class="left hide-on-med-and-down">
+				<li><a href="javascript:history.back()"><i
+						class="material-icons">arrow_back</i></a></li>
+				<li><a href="/telaInicioSec">Inicio</a></li>
+				<li><a href="/painelSenha">Painel Atendimento</a></li>
+			</ul>
+		</div>
+	</nav>	
+	<h2 style="text-align: center">Lista Portaria</h2>
+	
+  <div class="row" style="margin-bottom: 0px">
+    <form class="col s12" action="buscarPorNomeP">
+      <div class="row">
+      
+        <div class="input-field col s7">
+          <i class=" prefix material-icons ">search</i>
+          <input id="icon_prefix" type="text" name="nome" class="validate">
+          <label for="icon_prefix">Buscar por nome</label>
+        </div>
+        
+        <div class="input-field col s5">
+          <a class="waves-effect waves-light btn" style="background-color: #DCDCDC" href="/cadPortaria">Criar Novo</a>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+	
 	<p>
-	<a href="javascript:history.back()">VOLTAR</a>
-	<p>
-	<a href="/cadPortaria">Cadastrar Portaria</a>
-	<p>
-	<form action="/buscarPorNomeP">
-		Buscar por Nome <br> <input type="search" name="nome" />
-		<button type="submit">Buscar</button>
-	</form>
-	<p>
-	<table class="striped">
+	<table class="striped" style="width: 70%; margin: 0px auto 0px auto">
 		<thead>
-			<th>Id</th>
-			<th>Nome:</th>
-			<th>Matricula</th>
-			<th>Alterar</th>
-<!-- 			<th>Excluir</th> -->
+			<th>Nome</th>
+			<th>Login</th>
+			<th>#</th>
+			<th>#</th>
 		</thead>
 
 		<tbody>
 			<tr th:each="p:${ports}">
-
-				<td th:text="${p.id}" />
 				<td th:text="${p.nome}" />
 				<td th:text="${p.login}" />
-				<td><a th:href="@{/alterarP(id=${p.id})}">Alterar</a></td>
-
-				<!-- <td><a
+				<td><a th:href="@{/alterarP(id=${p.id})}"><i class="material-icons">edit</i></a></td>
+				<td><a
 					th:attr="onclick=|return confirm('Deseja desativar: ${p.nome}')|"
-					th:href="@{/excluirP(id=${p.id})}">Desativar</a></td> -->
-
+					th:href="@{/excluirP(id=${p.id})}"><i class="material-icons" style="color:red">delete_forever</i></a></td>
 			</tr>
 
 		</tbody>
 	</table>
-
-
+        <script src="/materialize/js/materialize.min.js"></script>	
 </body>
 </html>

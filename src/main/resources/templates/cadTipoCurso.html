@@ -1,4 +1,56 @@
 <!DOCTYPE html>
+<html style="font-family: Calibri" xmlns:th="http://tymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro Tipo de Curso</title>
+<link rel="stylesheet" type="text/css"
+	href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+</head>
+	<body>
+		<nav>
+			<div class="nav-wrapper col s6">
+				<a href="/logoutS"><i class="material-icons right"
+					style="font-size: 45px">exit_to_app</i></a> <img
+					class="brand-logo center" src="/image/senai-logo-nav.png">
+				<ul class="left hide-on-med-and-down">
+					<li><a href="javascript:history.back()"> <i
+							class="material-icons">arrow_back</i></a></li>
+					<li><a href="/telaInicioSec">Inicio</a></li>
+					<li><a href="/painelSenha">Painel Atendimento</a></li>
+				</ul>
+			</div>
+		</nav>
+		<h2 style="text-align: center;">Cadastro Tipo de Curso</h2>
+	
+		<form class="col s12" method="post"
+			style="width: 40%; margin: 0px auto 0px auto" action="salvarTipoCurso">
+			<input type="hidden" name="id" />
+			<div class="row">
+				<div class="input-field col s12">
+					<input placeholder="Tipo de Curso" type="text" name="tpCurso" th:value="${tc?.tpCurso}" required>
+				</div>
+			</div>
+				
+			<div class="row">			
+				<div class="input-field col s4">
+					<input class="waves-effect waves-light btn"
+						style="background-color: #DCDCDC" type="submit">
+				</div>	
+			</div>
+		</form>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="/materialize/js/materialize.min.js"></script>
+	</body>
+	<script>
+	  $(document).ready(function(){
+		    $('select').formSelect();
+		  });
+	</script>
+</html>
+
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
@@ -20,4 +72,4 @@
 		</div>
 	</form>
 </body>
-</html>
+</html> -->

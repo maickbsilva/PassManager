@@ -1,4 +1,75 @@
 <!DOCTYPE html>
+<html style="font-family: Calibri">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Cursos</title>
+<link rel="stylesheet" type="text/css" href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>  
+	<nav>
+		<div class="nav-wrapper col s6">	
+			<a href="/logoutS"><i class="material-icons right" style="font-size: 45px">exit_to_app</i></a>		
+			<img class="brand-logo center" src="/image/senai-logo-nav.png">
+			<ul class="left hide-on-med-and-down">
+				<li><a href="javascript:history.back()"><i class="material-icons">arrow_back</i></a></li>
+				<li><a href="/telaInicioSec">Inicio</a></li>
+				<li><a href="/painelSenha">Painel Atendimento</a></li>
+			</ul>
+		</div>
+	</nav>	
+	<h2 style="text-align: center">Lista de Cursos</h2>
+	
+  <div class="row" style="margin-bottom: 0px">
+    <form class="col s12" action="/buscarPorNome">
+      <div class="row">
+      
+        <div class="input-field col s7">
+          <i class=" prefix material-icons ">search</i>
+          <input id="icon_prefix" type="text" name="nome" class="validate">
+          <label for="icon_prefix">Buscar por nome</label>
+        </div>
+        
+        <div class="input-field col s5">
+          <a class="waves-effect waves-light btn" style="background-color: #DCDCDC" href="/cadCurso">Criar Novo</a>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+	
+	<p>
+	<table class="striped" style="width: 90%; margin: 0px auto 0px auto">
+		<thead>
+			<th>Nome</th>
+			<th><a href="/buscarPorTpCurso" style="text-decoration:none">Tipo Curso</a></th>
+			<th>Início Matrícula</th>
+			<th>Expiração Matrícula</th>
+			<th></th>
+			<th></th>
+		</thead>
+
+		<tbody>
+			<tr th:each="c:${cursos}">
+				<td th:text="${c.nome}" />
+				<td th:text="${c.tpCurso?.tpCurso}" />
+				<td th:text="${c.matriculaInicio}" />
+				<td th:text="${c.matriculaExpiracao}" />
+				<td><a th:href="@{/alterarC(id=${c.id})}"><i class="material-icons">edit</i></a></td>
+				<td><a
+					th:attr="onclick=|return confirm('Deseja excluir: ${c.nome}')|"
+					th:href="@{/excluirC(id=${c.id})}"><i class="material-icons" style="color:red">delete_forever</i></a></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<script src="/materialize/js/materialize.min.js"></script>
+	
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -23,7 +94,7 @@
 			<th>Matricula Inicio</th>
 			<th>Matricula Expiracao</th>
 			<th>Alterar</th>
-<!-- 			<th>Excluir</th> -->
+			<th>Excluir</th>
 		</thead>
 
 		<tbody>
@@ -31,12 +102,12 @@
 				<td th:text="${c.id}" />
 				<td th:text="${c.nome}" />
 				<td th:text="${c.tpCurso?.tpCurso}" />
-				<td th:text="${c.matriculaInicio}" /> <!-- colocar um format -->
+				<td th:text="${c.matriculaInicio}" /> colocar um format
 				<td th:text="${c.matriculaExpiracao}" />
 				<td><a th:href="@{/alterarC(id=${c.id})}">Alterar</a></td>
-<!-- 				<td><a
+				<td><a
 					th:attr="onclick=|return confirm('Deseja excluir: ${c.nome}')|"
-					th:href="@{/excluirC(id=${c.id})}">Excluir </a></td> -->
+					th:href="@{/excluirC(id=${c.id})}">Excluir </a></td>
 
 			</tr>
 
@@ -45,4 +116,4 @@
 
 
 </body>
-</html>
+</html> -->
