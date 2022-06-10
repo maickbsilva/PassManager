@@ -31,7 +31,8 @@ span{
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    height:60vh;
+    font-size: 3em;
+    
 }
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
@@ -39,19 +40,21 @@ span{
 }
 img{
     width:100%;
+ 
 }
 #senha{
-    font-size:5em;
     color: red;
     text-align: center;
-    font-weight: 500;
+    font-weight: bold;
     position: relative;
     top:20%;
     text-transform: uppercase;
 }
 .h3-senha{
     color: black;
-    font-weight: 400;
+    font-weight: bold;
+    padding: 5%;
+    
     
 }
 .ult-chamds{
@@ -79,4 +82,7 @@ li{
     font-size: 4em;
     color:white;
     
+}
+.hora{
+	font-size: 4em;
 }

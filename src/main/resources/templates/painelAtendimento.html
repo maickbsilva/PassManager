@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/css/telaSenha.css">
-<title>Document</title>
+<meta http-equiv="refresh" content="5">
+ <link rel="stylesheet" href="/css/telaSenha.css">
+<title>Painel Senha Externo</title>
 </head>
 <body>
 	<div class="container-principal">
@@ -13,12 +14,12 @@
 			<img class="logo"
 				src="https://www.novaconcursos.com.br/portal/wp-content/uploads/2015/10/senai-logo.jpg" />
 			<h1 class="h1-header">Escola Senai “Ricardo Lerner”</h1>
-			<span id="exibeHora"></span>
+			<span class="hora" id="exibeHora"></span>
 		</header>
 
 		<div class="grid-container">
 			<div class="grid-item" id="senha">
-				senha
+				EM ATENDIMENTO
 
 				<h3 class="h3-senha" th:each="ts:${primeiro}">
 					<h6 th:text="${ts.visitante.nome}"/>
@@ -30,7 +31,7 @@
 				
 			</div>
 			<div class="grid-item">
-				<img src="/image/img1-carrousel.png" />
+				<img src="/image/img1-carrousel.png"/>
 			</div>
 		</div>
 		<section class="ult-chamds">

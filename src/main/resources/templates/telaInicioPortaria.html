@@ -2,44 +2,32 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INICIO | PORTARIA</title>
-<link rel="stylesheet" href="css/estilo.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Imprima&display=swap"
+<title>Início Secretaria</title>
+<link rel="stylesheet" type="text/css"
+	href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 </head>
-<body>
-	<div class="iniporPrinc">
-
-		<header class="cabecalho">
-			<img src="/image/senai-logo2.png">
+	<body>
+		<nav>
+			<div class="nav-wrapper col s6">	
+				<a href="/logoutP"><i class="material-icons right" style="font-size: 45px">exit_to_app</i></a>		
+				<img class="brand-logo center" src="/image/senai-logo-nav.png">
+				<ul class="left hide-on-med-and-down">
+					<li><a href="javascript:history.back()"><i
+							class="material-icons">arrow_back</i></a></li>
+					<li><a href="/telaInicioPortaria">Inicio</a></li>
+				</ul>
+			</div>
+		</nav>	
+	
+		<div class="row" style="margin-top: 250px">
+		  
+			<a href="listaVisit/1" class="waves-effect waves-light btn-large col" style="margin: 0 40px 0 60px; background-color: #DCDCDC"><i class="material-icons left">dehaze</i>Visitantes</a>
 			
-				<button class="btn-sair">
-				<a class="link-Sair" href="logoutP">Sair</a>
-				</button>
-			
-		</header>
-
-		<div class="cd-cc">
-			<button class="btn-curDisp">
-				<a class="link-curDisp" href="listaCurso/1">Cursos<br>
-					Disponiveis
-				</a>
-			</button>
-
-			<button class="btn-consCad">
-				<a class="link-consCad" href="listaVisit/1">Lista <br>Visitantes
-				</a>
-			</button>
+			<a href="listaCurso/1" class="waves-effect waves-light btn-large col" style="margin: 0 40px 0 60px; background-color: #DCDCDC"><i class="material-icons left">dehaze</i>Cursos</a>
 		</div>
-
-		<footer> Escola Senai “Ricardo Lerner” </footer>
-	</div>
-</body>
+	</body>
 </html>
 
 

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.projetosenha.secretaria.annotation.PortariaAnnotation;
+import com.projetosenha.secretaria.annotation.Publico;
 import com.projetosenha.secretaria.annotation.SecretariaAnnotation;
 import com.projetosenha.secretaria.model.Curso;
 import com.projetosenha.secretaria.model.GeraAtendimento;
@@ -81,12 +82,12 @@ public class GeraAtendimentoController {
 		return "painelSenha";
 	}
 
-	@SecretariaAnnotation
+	@Publico
 	@RequestMapping("painelAtendimento/{page}")
 	public String painelAtendimento(Model model, @PathVariable("page") int page) {
 
 		// cria um pageable informando os parametros da pagina
-		PageRequest pageable = PageRequest.of(page - 1, 5, Sort.by(Sort.Direction.DESC, "id"));
+		PageRequest pageable = PageRequest.of(page - 1, 3, Sort.by(Sort.Direction.DESC, "id"));
 
 		// cria um page de adm atraves dos parametros passados ao repository
 		Page<GeraAtendimento> pagina = repository.buscaUltimosAt(pageable);

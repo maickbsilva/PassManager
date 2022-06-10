@@ -2,6 +2,7 @@
 <html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="utf-8">
+<!-- <meta http-equiv="refresh" content="5" > -->
 <title>Painel Senha Interno Secretaria</title>
 <link rel="stylesheet" type="text/css"
 	href="/materialize/css/materialize.css">
@@ -65,16 +66,14 @@
 			<div class="container-ult-senhas">
 				<section class="sect-ult-senhas">
 
-					<h2 class="ult-senhas-h2">Ultimas senhas</h2>
+					<h2 class="ult-senhas-h2">ÚLTIMOS ATENDIDOS</h2>
 
 					<ul class="ul-ultimos" th:each="ts:${ultimos}">
 						<li th:text="${ts.visitante.nome}" />
-						<li th:text="${ts.horaFimAtendimento}" />
+						<li class="horarioat" th:text="${ts.horaFimAtendimento}" />
 					</ul>
 				</section>
 			</div>
-
-
 
 		</div>
 
