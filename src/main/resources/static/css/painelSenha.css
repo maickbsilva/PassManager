@@ -71,8 +71,7 @@
 	height:26vh;
 	text-align:center;
 	color:white;
-	overflow-y:hidden;
-	/* overflow-x: scroll; */
+	overflow-y: scroll;
 	margin-left: 2%;
 	margin-bottom: 1.5%;
 	margin-right: 5%;

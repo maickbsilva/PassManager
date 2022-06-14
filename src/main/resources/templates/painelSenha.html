@@ -2,7 +2,192 @@
 <html xmlns:th="http://tymeleaf.org">
 <head>
 <meta charset="utf-8">
-<!-- <meta http-equiv="refresh" content="5" > -->
+<title>Painel Senha Interno Secretaria</title>
+<link rel="stylesheet" type="text/css" href="/css/painelSenha.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+</head>
+<body>
+	<div class="container-principal">
+		<header th:replace="fragments/padrao :: cabecalho"></header>
+
+
+
+		<div class="container">
+			<!-- container exibição de dados a secretaria -->
+			<div class="tb-atendimento">
+				<div class="table1">
+					<div class="thead1">
+						<div th:each="ts:${tela}">
+							<h1 class="h1">Nome</h1>
+							<h2 class="h2" th:text="${ts.visitante.nome}"></h2>
+							<h1 class="h1">Preferencial</h1>
+							<h2 class="h2" th:text="${ts.pref == true ? 'Sim' : 'Não'}"></h2>
+							<h1 class="h1">Assunto</h1>
+							<h2 class="h2" th:text="${ts.assunto.descAssunto}"></h2>
+							<!-- <input type="hidden" value="{/atualizaSenha(id=${ts.id})}" name="p"> -->
+
+						</div>
+						<button class="btn-EncAtd" id="teste">
+							<a onclick="proximo()">Próximo</a>
+						</button>
+
+						<button class="btn-RepAtd" onclick='startSound()'>
+							<a href="#">Repete</a>
+						</button>
+						<div></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- fazer isso virar uma lista na horizontal -->
+			<div class="container-ult-senhas">
+				<section class="sect-ult-senhas">
+
+					<h2 class="ult-senhas-h2">Últimas senhas</h2>
+					<ul class="ul-ultimos" th:each="ts:${ultimos}">
+						<li th:text="${ts.visitante.nome}" />
+						<li th:text="${ts.horaFimAtendimento}" />
+					</ul>
+				</section>
+			</div>
+
+		</div>
+
+		<div class="tb-senhas">
+			<table class="table2">
+				<h1 class="h1-tb-senha">PRÓXIMAS SENHAS</h1>
+				<thead class="thead2">
+					<th class="th">Nome</th>
+					<th class="th">PREF</th>
+					<th class="th">Assunto</th>
+				</thead>
+				<tbody class="tbody2" id="testete"></tbody>
+			</table>
+		</div>
+	</div>
+	<div class="detalhe-baixo"></div>
+
+
+
+<script th:inline="javascript">
+let proximoId = 0;
+
+window.addEventListener("load", () => {
+	
+	if(window.location.pathname?.includes("id")) {
+		const music = new Audio('/audio/Rua-Direita-1.mp3');
+		music.play();
+	}
+
+const proximos = /*[[${itemJS}]]*/
+const ultimo = /*[[${ultimos}]]*/
+console.log(proximos)
+// console.log(ultimo)
+const ultimoAtendido = ultimo[1]
+const primeiro = ultimo[0]
+proximos.shift()
+
+const tbTT = document.getElementById("testete");
+
+const pegaPreferencias = proximos.filter(item => item.pref);
+const pegaSemPreferencias = proximos.filter(item => !item.pref);
+
+
+
+let alternar = [];
+let qtdI = 0;
+
+console.log(alternar.length)
+let count = 0;
+console.log(primeiro)
+while (proximos.length >= alternar.length) {
+if (count < 1 && ultimoAtendido && primeiro) {
+if (!primeiro.pref) {
+qtdI = 0;
+console.log("aq")
+} else if(ultimoAtendido.pref && primeiro.pref) {
+qtdI = 3;
+} else if (!ultimoAtendido.pref && primeiro.pref) {
+qtdI = 1;
+}
+
+
+count = 10;
+}
+
+if(qtdI < 2) {
+
+alternar.push(pegaPreferencias[0])
+pegaPreferencias.shift();
+if(pegaPreferencias.length === 0) {
+qtdI = 3;
+continue;
+}
+
+qtdI += 1;
+continue;
+}
+
+if(pegaSemPreferencias.length > 0) {
+alternar.push(pegaSemPreferencias[0]);
+pegaSemPreferencias.shift();
+}
+qtdI = pegaPreferencias.length === 0 ? 3 : 0;
+
+if(pegaPreferencias.length === 0 && pegaSemPreferencias.length === 0) {
+break;
+}
+}
+
+const itens = alternar.filter(item => item);
+let HTML_BODY = "<tr>"
+itens.forEach((item, index) => {
+HTML_BODY += `
+<tr>
+<td>${item.visitante.nome}</td>
+<td>${item.pref ? "Sim" : "Não"}</td>
+<td>${item.assunto ? item?.assunto.descAssunto : "Sem assunto"}</td>
+</tr>
+`;
+})
+proximoId = itens[0];
+
+HTML_BODY += "</tr>"
+tbTT.innerHTML = HTML_BODY
+})
+
+function proximo () {
+startSound();
+
+
+window.location.assign("/atualizaSenha?id=" + proximoId.id)
+}
+
+function startSound() {
+const music = new Audio('/audio/Rua-Direita-1.mp3');
+music.play();
+}
+</script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://tymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="5" >
 <title>Painel Senha Interno Secretaria</title>
 <link rel="stylesheet" type="text/css"
 	href="/materialize/css/materialize.css">
@@ -32,7 +217,7 @@
 			</div>
 		</nav>
 		<div class="container">
-			<!-- container exibição de dados a secretaria -->
+			container exibição de dados a secretaria
 			<div class="tb-atendimento">
 				<div class="table1">
 					<div class="thead1">
@@ -44,7 +229,7 @@
 							<h1 class="h1">Assunto</h1>
 							<h2 class="h2" th:text="${ts.assunto.descAssunto}"></h2>
 
-							<!-- <input type="hidden" value="{/atualizaSenha(id=${ts.id})}" name="p"> -->
+							<input type="hidden" value="{/atualizaSenha(id=${ts.id})}" name="p">
 
 
 							<button class="btn-EncAtd">
@@ -62,7 +247,7 @@
 				</div>
 			</div>
 
-			<!-- fazer isso virar uma lista na horizontal -->
+			fazer isso virar uma lista na horizontal
 			<div class="container-ult-senhas">
 				<section class="sect-ult-senhas">
 
@@ -90,7 +275,7 @@
 				<tbody class="tbody2">
 					<tr th:each="ts:${telasenha}">
 						<td th:text="${ts.visitante.nome}" />
-						<!-- if pref = true print sim : nao -->
+						if pref = true print sim : nao
 						<td th:text="${ts.pref == true ? 'Sim' : 'Não'}" />
 						<td th:text="${ts.assunto.descAssunto}" />
 					</tr>
@@ -107,74 +292,5 @@
 			music.play();
 		}
 	</script>
-</body>
-</html>
-<!-- PRIMEIRO -->
-<!-- <!DOCTYPE html>
-<html xmlns:th="http://tymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<meta http-equiv="refresh" content="5"> fica atualizando a pag de 5 em 5s
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Painel SENHA</h1>
-	<p>
-	<table class="striped">
-		<thead>
-			<th>ID</th>
-			<th>Nome</th>
-			<th>PREF</th>
-			<th>Atendimento</th>
-		</thead>
-		<tbody>
-			<tr th:each="ts:${primeiro}">
-				<td th:text="${ts.id}" />
-				<td th:text="${ts.visitante.nome}" />
-				<td th:text="${ts.pref}" />
-				<td th:text="${ts.atendimento}" />
-				<td><a th:href="@{/atualizaSenha(id=${ts.id})}">Encerrar
-						Atendimento</a></td>
-			</tr>
-		</tbody>
-	</table>
-	<p>
-	<table class="striped">
-	<h1>PROXIMAS SENHAS</h1>
-		<thead>
-			<th>ID</th>
-			<th>Nome</th>
-			<th>PREF</th>
-			<th>Assunto</th>
-		</thead>
-		<tbody>
-			<tr th:each="ts:${telasenha}">
-				<td th:text="${ts.id}" />
-				<td th:text="${ts.visitante.nome}" />
-				<td th:text="${ts.pref}" />
-				<td th:text="${ts.assunto.descAssunto}" />
-			</tr>
-		</tbody>
-	</table>
-	<p>
-	
-	<table class="striped">
-	<h1>Ultimas Senhas Chamadas</h1>
-		<thead>
-			<th>ID</th>
-			<th>Nome</th>
-			<th>PREF</th>
-			<th>Encerrado</th>
-		</thead>
-		<tbody>
-			<tr th:each="ts:${ultimos}">
-				<td th:text="${ts.id}" />
-				<td th:text="${ts.visitante.nome}" />
-				<td th:text="${ts.pref}" />
-				<td th:text="${ts.horaFimAtendimento}" />
-			</tr>
-		</tbody>
-	</table>
-
 </body>
 </html> -->

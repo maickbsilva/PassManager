@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://tymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:fragment="cabecalho">
+		<nav>			
+			<div class="nav-wrapper col s6" th:if="${session.secLogado != null}">
+				<a href="/logoutS"><i class="material-icons right"
+					style="font-size: 45px">exit_to_app</i></a> <img
+					class="brand-logo center" src="/image/senai-logo-nav.png">
+				<ul class="left hide-on-med-and-down">
+					<li><a href="javascript:history.back()"><i
+							class="material-icons">arrow_back</i></a></li>
+					<li><a href="/telaInicioSec">Inicio</a></li>
+					<li><a href="/painelSenha">Painel Atendimento</a></li>
+				</ul>
+			</div>
+			<div class="nav-wrapper col s6"
+				th:if="${session.portLogado != null}">
+				<a href="/logoutP"><i class="material-icons right"
+					style="font-size: 45px">exit_to_app</i></a> <img
+					class="brand-logo center" src="/image/senai-logo-nav.png">
+				<ul class="left hide-on-med-and-down">
+					<li><a href="javascript:history.back()"><i
+							class="material-icons">arrow_back</i></a></li>
+					<li><a href="/telaInicioPortaria">Inicio</a></li>
+					<li><a href="/painelSenha">Painel Atendimento</a></li>
+				</ul>
+			</div>
+			
+		</nav>
+	</header>
+
+</body>
+</html>

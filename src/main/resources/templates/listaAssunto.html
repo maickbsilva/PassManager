@@ -1,4 +1,50 @@
 <!DOCTYPE html>
+<html style="font-family: Calibri">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Cursos</title>
+<link rel="stylesheet" type="text/css" href="/materialize/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>  
+	<header th:replace="fragments/padrao :: cabecalho"></header>
+
+	<h2 style="text-align: center">Lista de Assuntos</h2>
+	
+  <div class="row" style="margin-bottom: 0px">
+      <div class="row">
+        
+        <div class="input-field col s5">
+          <a class="waves-effect waves-light btn" style="background-color: #DCDCDC" href="/cadAssunto">Novo</a>
+        </div>
+        
+      </div>
+  </div>
+	
+	<p>
+	<table class="striped" style="width: 70%; margin: 0px auto 0px auto">
+		<thead>
+			<th>Assunto</th>
+			<th>#</th>
+			<th>#</th>
+		</thead>
+
+<tbody>
+			<tr th:each="a:${assu}">
+				<td th:text="${a.descAssunto}" />
+				<td><a th:href="@{/alterarA(id=${a.id})}"><i class="material-icons">edit</i></a></td>
+				<td><a
+					th:attr="onclick=|return confirm('Deseja excluir: ${a.descAssunto}')|"
+					th:href="@{/excluirA(id=${a.id})}"><i class="material-icons" style="color:red">delete_forever</i> </a></td>
+			</tr>
+		</tbody>
+	</table>
+        <script src="/materialize/js/materialize.min.js"></script>	
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -12,7 +58,7 @@
 			<th>Id</th>
 			<th>Des Assunto:</th>
 			<th>Alterar</th>
-<!-- 			<th>Excluir</th> -->
+			<th>Excluir</th>
 		</thead>
 
 		<tbody>
@@ -22,9 +68,9 @@
 				<td th:text="${a.descAssunto}" />
 				<td><a th:href="@{/alterarA(id=${a.id})}">Alterar</a></td>
 
-<!-- 				<td><a
+				<td><a
 					th:attr="onclick=|return confirm('Deseja excluir: ${a.descAssunto}')|"
-					th:href="@{/excluirA(id=${a.id})}">Excluir </a></td> -->
+					th:href="@{/excluirA(id=${a.id})}">Excluir </a></td>
 
 			</tr>
 
@@ -33,4 +79,4 @@
 
 
 </body>
-</html>
+</html> -->

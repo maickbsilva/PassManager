@@ -10,19 +10,8 @@
 
 </head>
 <body>
-	<nav>
-		<div class="nav-wrapper col s6">
-			<a href="/logoutS"><i class="material-icons right"
-				style="font-size: 45px">exit_to_app</i></a> <img
-				class="brand-logo center" src="/image/senai-logo-nav.png">
-			<ul class="left hide-on-med-and-down">
-				<li><a href="javascript:history.back()"><i
-						class="material-icons">arrow_back</i></a></li>
-				<li><a href="/telaInicioSec">Inicio</a></li>
-				<li><a href="/painelSenha">Painel Atendimento</a></li>
-			</ul>
-		</div>
-	</nav>
+	<header th:replace="fragments/padrao :: cabecalho"></header>
+
 	<h2 style="text-align: center">Lista Periodo de Cursos</h2>
 
 	<div class="row" style="margin-bottom: 0px">

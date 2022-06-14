@@ -29,7 +29,7 @@ public class GeraAtendimento {
 	private Visitante visitante;
 	
 	private Date horaAtendimento;
-	
+		
 	private Boolean pref = false;
 	
 	private Boolean atendimento = false;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-family: Calibri">
+<html xmlns:th="http://tymeleaf.org" style="font-family: Calibri" >
 <head>
 <meta charset="UTF-8">
 <title>Lista de Visitantes</title>
@@ -8,18 +8,7 @@
 
 </head>
 <body>  
-	<nav>
-		<div class="nav-wrapper col s6">	
-			<a href="/logoutS"><i class="material-icons right" style="font-size: 45px">exit_to_app</i></a>		
-			<img class="brand-logo center" src="/image/senai-logo-nav.png">
-			<ul class="left hide-on-med-and-down">
-				<li><a href="javascript:history.back()"><i
-						class="material-icons">arrow_back</i></a></li>
-				<li><a href="/telaInicioSec">Inicio</a></li>
-				<li><a href="/painelSenha">Painel Atendimento</a></li>
-			</ul>
-		</div>
-	</nav>	
+	<header th:replace="fragments/padrao :: cabecalho"></header>
 	<h2 style="text-align: center">Lista de Visitantes</h2>
 	
   <div class="row" style="margin-bottom: 0px">
@@ -70,6 +59,15 @@
 
 		</tbody>
 	</table>
+	<ul class="pagination" style="margin-left: 45%">
+	    <li th:class="${pagAtual == 1 ? 'disable' : 'waves-effect'}"><a th:href="${pagAtual > 1 ? pagAtual -1 : '#'}"><i class="material-icons">chevron_left</i></a></li>	
+		
+		<li th:class="${pagAtual == p ? 'active blue' : 'waves-effect'} "  th:each="p:${numPaginas}">
+			<a th:href="${p}"><span th:text="${p}"></span></a>
+		</li>
+	
+	    <li class="waves-effect "><a th:href="${pagAtual < totalPages ? pagAtual +1 : '#'}"><i class="material-icons">chevron_right</i></a></li>
+  	</ul>
 	<script src="/materialize/js/materialize.min.js"></script>
 	
 </body>
